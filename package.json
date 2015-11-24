@@ -1,0 +1,24 @@
+{
+  "name": "dotenv-expand",
+  "version": "0.1.0",
+  "description": "Expand environment variables using dotenv",
+  "main": "lib/main.js",
+  "scripts": {
+    "test": "lab test/* --coverage",
+    "posttest": "npm run lint",
+    "lint": "standard"
+  },
+  "keywords": [
+    "dotenv",
+    "expand",
+    "variables"
+  ],
+  "author": "motdotla",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "dotenv": "https://api.github.com/repos/motdotla/dotenv/tarball/orthogonal-vars",
+    "lab": "^7.3.0",
+    "should": "^7.1.1",
+    "standard": "^5.4.1"
+  }
+}
