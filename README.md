@@ -5,6 +5,10 @@ Dotenv-expand adds variable expansion on top of
 expand environment variables already existing on your machine, then
 dotenv-expand is your tool.
 
+[![BuildStatus](https://img.shields.io/travis/motdotla/dotenv-expand/master.svg?style=flat-square)](https://travis-ci.org/motdotla/dotenv-expand)
+[![NPM version](https://img.shields.io/npm/v/dotenv-expand.svg?style=flat-square)](https://www.npmjs.com/package/dotenv-expand)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
+
 ## Install
 
 ```bash
