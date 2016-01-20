@@ -119,7 +119,7 @@ describe('dotenv-expand', function () {
       done()
     })
 
-    it('does not yet expand es6 template strings', function (done) {
+    it('does not YET expand es6 template strings (pull request welcomed)', function (done) {
       var obj = dotenvExpand(dotenv)
 
       obj['MONGOLAB_URI'].should.eql('mongodb://${MONGOLAB_USER}:${MONGOLAB_PASSWORD}@${MONGOLAB_DOMAIN}:${MONGOLAB_PORT}/${MONGOLAB_DATABASE}')
