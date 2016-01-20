@@ -1,5 +1,7 @@
 # dotenv-expand
 
+<img src="https://raw.githubusercontent.com/motdotla/dotenv-expand/master/dotenv-expand.png" alt="dotenv-expand" align="right" />
+
 Dotenv-expand adds variable expansion on top of 
 [dotenv](http://github.com/motdotla/dotenv). If you find yourself needing to
 expand environment variables already existing on your machine, then
