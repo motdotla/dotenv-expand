@@ -119,10 +119,17 @@ describe('dotenv-expand', function () {
       done()
     })
 
-    it('does not YET expand es6 template strings (pull request welcomed)', function (done) {
+    it('expands parameters enclosed in curly braces', function (done) {
       var obj = dotenvExpand(dotenv)
 
-      obj['MONGOLAB_URI'].should.eql('mongodb://${MONGOLAB_USER}:${MONGOLAB_PASSWORD}@${MONGOLAB_DOMAIN}:${MONGOLAB_PORT}/${MONGOLAB_DATABASE}')
+      obj['MONGOLAB_URI'].should.eql('mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
+      done()
+    })
+
+    it('expands multiple known, as well as missing, environment variables', function (done) {
+      var obj = dotenvExpand(dotenv)
+
+      obj['COMPLEX'].should.eql('basic:$basic')
       done()
     })
   })
