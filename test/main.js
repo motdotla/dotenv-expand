@@ -66,6 +66,16 @@ describe('dotenv-expand', function () {
       obj['MACHINE_EXPAND'].should.eql('machine')
       done()
     })
+
+    it('does not expand escaped variables', function (done) {
+      var dotenv = {
+        'ESCAPED_EXPAND': '\\$ESCAPED'
+      }
+      var obj = dotenvExpand(dotenv)
+
+      obj['ESCAPED_EXPAND'].should.eql('$ESCAPED')
+      done()
+    })
   })
 
   describe('integration', function () {
