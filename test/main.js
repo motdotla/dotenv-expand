@@ -22,22 +22,26 @@ describe('dotenv-expand', function () {
     it('expands environment variables', function (done) {
       var dotenv = {
         'BASIC': 'basic',
-        'BASIC_EXPAND': '${BASIC}'
+        'BASIC_EXPAND': '${BASIC}',
+        'BASIC_EXPAND_SIMPLE': '$BASIC'
       }
       var obj = dotenvExpand(dotenv)
 
       obj['BASIC_EXPAND'].should.eql('basic')
+      obj['BASIC_EXPAND_SIMPLE'].should.eql('basic')
       done()
     })
 
     it('expands environment variables existing already on the machine', function (done) {
       process.env.MACHINE = 'machine'
       var dotenv = {
-        'MACHINE_EXPAND': '${MACHINE}'
+        'MACHINE_EXPAND': '${MACHINE}',
+        'MACHINE_EXPAND_SIMPLE': '$MACHINE'
       }
       var obj = dotenvExpand(dotenv)
 
       obj['MACHINE_EXPAND'].should.eql('machine')
+      obj['MACHINE_EXPAND_SIMPLE'].should.eql('machine')
       done()
     })
 
