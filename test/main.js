@@ -73,7 +73,7 @@ describe('dotenv-expand', function () {
       done()
     })
 
-    it('handles if there are variable and string', function (done) {
+    it('handles if there are variable and space', function (done) {
       var dotenv = {
         'NAME': 'dotenv',
         'NAME_WITH_TEXT': '$NAME is the module\'s name'
@@ -82,6 +82,18 @@ describe('dotenv-expand', function () {
       var obj = dotenvExpand(dotenv)
 
       obj['NAME_WITH_TEXT'].should.eql('dotenv is the module\'s name')
+      done()
+    })
+
+    it('handles if there are variable and backspace', function (done) {
+      var dotenv = {
+        'BASE_URL': 'http://localhost',
+        'URL': '$BASE_URL/profile'
+      }
+
+      var obj = dotenvExpand(dotenv)
+
+      obj['URL'].should.eql('http://localhost/profile')
       done()
     })
   })
