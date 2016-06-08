@@ -72,6 +72,18 @@ describe('dotenv-expand', function () {
       obj['ESCAPED_EXPAND'].should.eql('$ESCAPED')
       done()
     })
+
+    it('handles if there are variable and string', function (done) {
+      var dotenv = {
+        'NAME': 'dotenv',
+        'NAME_WITH_TEXT': '$NAME is the module\'s name'
+      }
+
+      var obj = dotenvExpand(dotenv)
+
+      obj['NAME_WITH_TEXT'].should.eql('dotenv is the module\'s name')
+      done()
+    })
   })
 
   describe('integration', function () {
