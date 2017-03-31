@@ -87,6 +87,19 @@ describe('dotenv-expand', function () {
       obj['ESCAPED_EXPAND'].should.eql('$ESCAPED')
       done()
     })
+
+    it('does not overwrite preset variables', function (done) {
+      process.env.SOME_ENV = 'production'
+      var dotenv = {
+        parsed: {
+          'SOME_ENV': 'development'
+        }
+      }
+      var obj = dotenvExpand(dotenv).parsed
+
+      obj['SOME_ENV'].should.eql('production')
+      done()
+    })
   })
 
   describe('integration', function () {
