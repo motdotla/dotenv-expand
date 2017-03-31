@@ -12,8 +12,8 @@ var dotenvExpand = require('../lib/main')
 describe('dotenv-expand', function () {
   describe('unit tests', function () {
     it('returns object', function (done) {
-      var dotenv = {}
-      var obj = dotenvExpand(dotenv)
+      var dotenv = { parsed: {} }
+      var obj = dotenvExpand(dotenv).parsed
 
       obj.should.be.an.instanceOf(Object)
       done()
@@ -21,11 +21,13 @@ describe('dotenv-expand', function () {
 
     it('expands environment variables', function (done) {
       var dotenv = {
-        'BASIC': 'basic',
-        'BASIC_EXPAND': '${BASIC}',
-        'BASIC_EXPAND_SIMPLE': '$BASIC'
+        parsed: {
+          'BASIC': 'basic',
+          'BASIC_EXPAND': '${BASIC}',
+          'BASIC_EXPAND_SIMPLE': '$BASIC'
+        }
       }
-      var obj = dotenvExpand(dotenv)
+      var obj = dotenvExpand(dotenv).parsed
 
       obj['BASIC_EXPAND'].should.eql('basic')
       obj['BASIC_EXPAND_SIMPLE'].should.eql('basic')
@@ -35,10 +37,12 @@ describe('dotenv-expand', function () {
     it('expands environment variables existing already on the machine', function (done) {
       process.env.MACHINE = 'machine'
       var dotenv = {
-        'MACHINE_EXPAND': '${MACHINE}',
-        'MACHINE_EXPAND_SIMPLE': '$MACHINE'
+        parsed: {
+          'MACHINE_EXPAND': '${MACHINE}',
+          'MACHINE_EXPAND_SIMPLE': '$MACHINE'
+        }
       }
-      var obj = dotenvExpand(dotenv)
+      var obj = dotenvExpand(dotenv).parsed
 
       obj['MACHINE_EXPAND'].should.eql('machine')
       obj['MACHINE_EXPAND_SIMPLE'].should.eql('machine')
@@ -47,9 +51,11 @@ describe('dotenv-expand', function () {
 
     it('expands missing environment variables to an empty string', function (done) {
       var dotenv = {
-        'UNDEFINED_EXPAND': '$UNDEFINED_ENV_KEY'
+        parsed: {
+          'UNDEFINED_EXPAND': '$UNDEFINED_ENV_KEY'
+        }
       }
-      var obj = dotenvExpand(dotenv)
+      var obj = dotenvExpand(dotenv).parsed
 
       obj['UNDEFINED_EXPAND'].should.eql('')
       done()
@@ -58,10 +64,12 @@ describe('dotenv-expand', function () {
     it('prioritizes machine key expansion over .env', function (done) {
       process.env.MACHINE = 'machine'
       var dotenv = {
-        'MACHINE': 'machine_env',
-        'MACHINE_EXPAND': '$MACHINE'
+        parsed: {
+          'MACHINE': 'machine_env',
+          'MACHINE_EXPAND': '$MACHINE'
+        }
       }
-      var obj = dotenvExpand(dotenv)
+      var obj = dotenvExpand(dotenv).parsed
 
       obj['MACHINE_EXPAND'].should.eql('machine')
       done()
@@ -69,9 +77,11 @@ describe('dotenv-expand', function () {
 
     it('does not expand escaped variables', function (done) {
       var dotenv = {
-        'ESCAPED_EXPAND': '\\$ESCAPED'
+        parsed: {
+          'ESCAPED_EXPAND': '\\$ESCAPED'
+        }
       }
-      var obj = dotenvExpand(dotenv)
+      var obj = dotenvExpand(dotenv).parsed
 
       obj['ESCAPED_EXPAND'].should.eql('$ESCAPED')
       done()
@@ -82,7 +92,7 @@ describe('dotenv-expand', function () {
     var dotenv
 
     beforeEach(function (done) {
-      dotenv = require('dotenv').load({ path: './test/.env' })
+      dotenv = require('dotenv').config({ path: './test/.env' })
       done()
     })
 
@@ -102,7 +112,7 @@ describe('dotenv-expand', function () {
     })
 
     it('expands missing environment variables to an empty string', function (done) {
-      var obj = dotenvExpand(dotenv)
+      var obj = dotenvExpand(dotenv).parsed
 
       obj['UNDEFINED_EXPAND'].should.eql('')
       done()
@@ -110,35 +120,35 @@ describe('dotenv-expand', function () {
 
     it('prioritizes machine key expansion over .env', function (done) {
       process.env.MACHINE = 'machine'
-      var obj = dotenvExpand(dotenv)
+      var obj = dotenvExpand(dotenv).parsed
 
       obj['MACHINE_EXPAND'].should.eql('machine')
       done()
     })
 
     it('multiple expand', function (done) {
-      var obj = dotenvExpand(dotenv)
+      var obj = dotenvExpand(dotenv).parsed
 
       obj['MONGOLAB_URI'].should.eql('mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
       done()
     })
 
     it('should expand recursively', function (done) {
-      var obj = dotenvExpand(dotenv)
+      var obj = dotenvExpand(dotenv).parsed
 
       obj['MONGOLAB_URI_RECURSIVELY'].should.eql('mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
       done()
     })
 
     it('multiple expand', function (done) {
-      var obj = dotenvExpand(dotenv)
+      var obj = dotenvExpand(dotenv).parsed
 
       obj['WITHOUT_CURLY_BRACES_URI'].should.eql('mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
       done()
     })
 
     it('should expand recursively', function (done) {
-      var obj = dotenvExpand(dotenv)
+      var obj = dotenvExpand(dotenv).parsed
 
       obj['WITHOUT_CURLY_BRACES_URI_RECURSIVELY'].should.eql('mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
       done()
