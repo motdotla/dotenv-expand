@@ -1,6 +1,6 @@
 {
   "name": "dotenv-expand",
-  "version": "0.1.0",
+  "version": "4.0.0",
   "description": "Expand environment variables using dotenv",
   "main": "lib/main.js",
   "scripts": {
@@ -16,9 +16,9 @@
   "author": "motdotla",
   "license": "BSD-2-Clause",
   "devDependencies": {
-    "dotenv": "^2.0.0",
-    "lab": "^7.3.0",
-    "should": "^7.1.1",
-    "standard": "^5.4.1"
+    "dotenv": "^4.0.0",
+    "lab": "^13.0.1",
+    "should": "^11.2.1",
+    "standard": "^9.0.2"
   }
 }
