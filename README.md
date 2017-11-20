@@ -1,3 +1,7 @@
+[![Donate](http://www.opensourcecitizen.org/badge)](http://www.opensourcecitizen.org/project?url=github.com/motdotla/dotenv-expand)
+
+If you found this library useful, donate some CPU cycles to this project by clicking above. Thank you! 😇
+
 # dotenv-expand
 
 <img src="https://raw.githubusercontent.com/motdotla/dotenv-expand/master/dotenv-expand.png" alt="dotenv-expand" align="right" />
