@@ -88,6 +88,18 @@ describe('dotenv-expand', function () {
       done()
     })
 
+    it('does not expand inline escaped dollar sign', function (done) {
+      var dotenv = {
+        parsed: {
+          'INLINE_ESCAPED_EXPAND': 'pa\\$\\$word'
+        }
+      }
+      var obj = dotenvExpand(dotenv).parsed
+
+      obj['INLINE_ESCAPED_EXPAND'].should.eql('pa$$word')
+      done()
+    })
+
     it('does not overwrite preset variables', function (done) {
       process.env.SOME_ENV = 'production'
       var dotenv = {
