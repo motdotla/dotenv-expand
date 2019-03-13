@@ -18,8 +18,6 @@ npm install dotenv --save
 npm install dotenv-expand --save
 ```
 
-[![Become a Citizen](http://www.opensourcecitizen.org/badge)](http://www.opensourcecitizen.org/project?url=github.com/motdotla/dotenv-expand)
-
 ## Usage
 
 As early as possible in your application, require dotenv and dotenv-expand, and
