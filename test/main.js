@@ -179,5 +179,20 @@ describe('dotenv-expand', function () {
       obj['WITHOUT_CURLY_BRACES_URI_RECURSIVELY'].should.eql('mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
       done()
     })
+
+    it('should not write to process.env if ignoreProcessEnv is set', function (done) {
+      var dotenv = {
+        ignoreProcessEnv: true,
+        parsed: {
+          SHOULD_NOT_EXIST: 'testing'
+        }
+      }
+      var obj = dotenvExpand(dotenv).parsed
+
+      var evaluation = typeof process.env.SHOULD_NOT_EXIST
+      obj['SHOULD_NOT_EXIST'].should.eql('testing')
+      evaluation.should.eql('undefined')
+      done()
+    })
   })
 })
