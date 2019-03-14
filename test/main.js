@@ -116,12 +116,12 @@ describe('dotenv-expand', function () {
     it('does not expand inline escaped dollar sign', function (done) {
       var dotenv = {
         parsed: {
-          'INLINE_ESCAPED_EXPAND_BCRYPT': '\\$this\\$is\\$bcrypt'
+          'INLINE_ESCAPED_EXPAND_BCRYPT': '\\$2b\\$10\\$OMZ69gxxsmRgwAt945WHSujpr/u8ZMx.xwtxWOCMkeMW7p3XqKYca'
         }
       }
       var obj = dotenvExpand(dotenv).parsed
 
-      obj['INLINE_ESCAPED_EXPAND_BCRYPT'].should.eql('$this$is$bcrypt')
+      obj['INLINE_ESCAPED_EXPAND_BCRYPT'].should.eql('$2b$10$OMZ69gxxsmRgwAt945WHSujpr/u8ZMx.xwtxWOCMkeMW7p3XqKYca')
       done()
     })
 
