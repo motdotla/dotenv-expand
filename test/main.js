@@ -112,6 +112,31 @@ describe('dotenv-expand', function () {
       obj['SOME_ENV'].should.eql('production')
       done()
     })
+
+    it('does not expand inline escaped dollar sign', function (done) {
+      var dotenv = {
+        parsed: {
+          'INLINE_ESCAPED_EXPAND_BCRYPT': '\\$2b\\$10\\$OMZ69gxxsmRgwAt945WHSujpr/u8ZMx.xwtxWOCMkeMW7p3XqKYca'
+        }
+      }
+      var obj = dotenvExpand(dotenv).parsed
+
+      obj['INLINE_ESCAPED_EXPAND_BCRYPT'].should.eql('$2b$10$OMZ69gxxsmRgwAt945WHSujpr/u8ZMx.xwtxWOCMkeMW7p3XqKYca')
+      done()
+    })
+
+    it('handle mixed values', function (done) {
+      var dotenv = {
+        parsed: {
+          'PARAM1': '42',
+          'MIXED_VALUES': '\\$this$PARAM1\\$is${PARAM1}'
+        }
+      }
+      var obj = dotenvExpand(dotenv).parsed
+
+      obj['MIXED_VALUES'].should.eql('$this42$is42')
+      done()
+    })
   })
 
   describe('integration', function () {
