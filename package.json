@@ -8,6 +8,10 @@
     "posttest": "npm run lint",
     "lint": "standard"
   },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/motdotla/dotenv-expand.git"
+  },
   "keywords": [
     "dotenv",
     "expand",
