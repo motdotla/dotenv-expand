@@ -8,12 +8,19 @@
     "posttest": "npm run lint",
     "lint": "standard"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/motdotla/dotenv-expand"
+  },
+  "bugs": {
+    "url": "https://github.com/motdotla/dotenv-expand/issues"
+  },
+  "author": "Scott Motte <mot@mot.la> (http://mot.la)",
   "keywords": [
     "dotenv",
     "expand",
     "variables"
   ],
-  "author": "motdotla",
   "license": "BSD-2-Clause",
   "devDependencies": {
     "dotenv": "^4.0.0",
