@@ -184,6 +184,21 @@ describe('dotenv-expand', function () {
       done()
     })
 
+    it('expands missing environment variables to an empty string but replaces with default nested', function(done){
+      var obj = dotenvExpand(dotenv).parsed
+
+      obj['UNDEFINED_EXPAND_WITH_DEFAULT_NESTED'].should.eql('default')
+      done()
+    })
+
+    it('expands missing environment variables to an empty string but replaces with default nested twice', function(done){
+      var obj = dotenvExpand(dotenv).parsed
+
+      obj['UNDEFINED_EXPAND_WITH_DEFAULT_NESTED_TWICE'].should.eql('default')
+      done()
+    })
+
+
     it('prioritizes machine key expansion over .env', function (done) {
       process.env.MACHINE = 'machine'
       var obj = dotenvExpand(dotenv).parsed
