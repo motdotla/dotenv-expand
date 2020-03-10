@@ -177,6 +177,22 @@ describe('dotenv-expand', function () {
       done()
     })
 
+    it('expands environment variables existing already on the machine even with a default when nested', function (done) {
+      process.env.MACHINE = 'machine'
+      dotenvExpand(dotenv)
+
+      process.env['DEFINED_EXPAND_WITH_DEFAULT_NESTED'].should.eql('machine')
+      done()
+    })
+
+    it('expands environment variables undefined with one already on the machine even with a default when nested', function (done) {
+      process.env.MACHINE = 'machine'
+      dotenvExpand(dotenv)
+
+      process.env['UNDEFINED_EXPAND_WITH_DEFINED_NESTED'].should.eql('machine')
+      done()
+    })
+
     it('expands missing environment variables to an empty string but replaces with default', function(done){
       var obj = dotenvExpand(dotenv).parsed
 
