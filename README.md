@@ -31,6 +31,6 @@ var myEnv = dotenv.config()
 dotenvExpand(myEnv)
 ```
 
-See [test/.env](./test/.env) for examples of variable expansion in your `.env`
-file. 
+See [test/.env](https://github.com/desrosj/dotenv-expand/blob/master/test/.env) for examples of variable expansion in
+your `.env` file. 
 
