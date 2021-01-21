@@ -47,6 +47,21 @@ describe('dotenv-expand', function () {
       done()
     })
 
+    it('expands variables inside of curly braces', function (done) {
+      var dotenv = {
+        parsed: {
+          'PORT': '12345',
+          'ENCLOSED': '{port: $PORT}',
+          'ENCLOSED_SIMPLE': '{port: $PORT}'
+        }
+      }
+      var obj = dotenvExpand(dotenv).parsed
+
+      obj['ENCLOSED'].should.eql('{port: 12345}')
+      obj['ENCLOSED_SIMPLE'].should.eql('{port: 12345}')
+      done()
+    })
+
     it('expands environment variables existing already on the machine', function (done) {
       process.env.MACHINE = 'machine'
       var dotenv = {
