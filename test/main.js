@@ -20,6 +20,18 @@ describe('dotenv-expand', function () {
       done()
     })
 
+    it('expands commands', function (done) {
+      var dotenv = {
+        parsed: {
+          'COMMAND': '$(echo "foo")'
+        }
+      }
+      var obj = dotenvExpand(dotenv).parsed
+
+      obj['COMMAND'].should.eql('foo')
+      done()
+    })
+
     it('expands environment variables', function (done) {
       var dotenv = {
         parsed: {
