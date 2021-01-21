@@ -20,6 +20,18 @@ describe('dotenv-expand', function () {
       done()
     })
 
+    it('expands commands', function (done) {
+      var dotenv = {
+        parsed: {
+          'COMMAND': '$(echo "foo")'
+        }
+      }
+      var obj = dotenvExpand(dotenv).parsed
+
+      obj['COMMAND'].should.eql('foo')
+      done()
+    })
+
     it('expands environment variables', function (done) {
       var dotenv = {
         parsed: {
@@ -32,6 +44,21 @@ describe('dotenv-expand', function () {
 
       obj['BASIC_EXPAND'].should.eql('basic')
       obj['BASIC_EXPAND_SIMPLE'].should.eql('basic')
+      done()
+    })
+
+    it('expands variables inside of curly braces', function (done) {
+      var dotenv = {
+        parsed: {
+          'PORT': '12345',
+          'ENCLOSED': '{port: $PORT}',
+          'ENCLOSED_SIMPLE': '{port: $PORT}'
+        }
+      }
+      var obj = dotenvExpand(dotenv).parsed
+
+      obj['ENCLOSED'].should.eql('{port: 12345}')
+      obj['ENCLOSED_SIMPLE'].should.eql('{port: 12345}')
       done()
     })
 
