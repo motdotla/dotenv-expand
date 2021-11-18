@@ -25,7 +25,6 @@
   "devDependencies": {
     "dotenv": "^4.0.0",
     "lab": "^13.0.1",
-    "should": "^11.2.1",
     "standard": "^9.0.2"
   },
   "types": "./index.d.ts"
