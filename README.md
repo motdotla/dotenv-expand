@@ -28,7 +28,7 @@ var dotenv = require('dotenv')
 var dotenvExpand = require('dotenv-expand')
 
 var myEnv = dotenv.config()
-dotenvExpand(myEnv)
+dotenvExpand.expand(myEnv)
 ```
 
 See [test/.env](https://github.com/motdotla/dotenv-expand/blob/master/test/.env) for examples of variable expansion in your `.env`
