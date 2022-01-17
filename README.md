@@ -1,3 +1,7 @@
+<p align="center">
+<strong>Announcement 📣</strong><br/>From the makers that brought you Dotenv and Dotenv Expand, introducing <a href="https://sync.dotenv.org">Dotenv Sync</a>.<br/>Sync your .env files between machines, environments, and team members.<br/><a href="https://sync.dotenv.org">Join the early access list.💛</a>
+</p>
+
 # dotenv-expand
 
 <img src="https://raw.githubusercontent.com/motdotla/dotenv-expand/master/dotenv-expand.png" alt="dotenv-expand" align="right" />
