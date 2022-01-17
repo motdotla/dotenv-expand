@@ -121,3 +121,14 @@ The expansion engine roughly has the following rules:
 
 You can see a full list of examples [here](https://github.com/motdotla/dotenv-expand/blob/master/test/.env).
 
+## Contributing Guide
+
+See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## CHANGELOG
+
+See [CHANGELOG.md](CHANGELOG.md)
+
+## Who's using dotenv-expand?
+
+[These npm modules depend on it.](https://www.npmjs.com/browse/depended/dotenv-expand)
