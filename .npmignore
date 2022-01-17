@@ -1,6 +1,6 @@
 coverage/
 examples/
-test/
+tests/
 .editorconfig
 .travis.yml
 Contributing.md
