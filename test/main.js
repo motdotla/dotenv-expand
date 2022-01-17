@@ -169,6 +169,52 @@ describe('dotenv-expand', function () {
       done()
     })
 
+    it('expands environment variables existing already on the machine even with a default', function (done) {
+      process.env.MACHINE = 'machine'
+      dotenvExpand(dotenv)
+
+      process.env['DEFINED_EXPAND_WITH_DEFAULT'].should.eql('machine')
+      done()
+    })
+
+    it('expands environment variables existing already on the machine even with a default when nested', function (done) {
+      process.env.MACHINE = 'machine'
+      dotenvExpand(dotenv)
+
+      process.env['DEFINED_EXPAND_WITH_DEFAULT_NESTED'].should.eql('machine')
+      done()
+    })
+
+    it('expands environment variables undefined with one already on the machine even with a default when nested', function (done) {
+      process.env.MACHINE = 'machine'
+      dotenvExpand(dotenv)
+
+      process.env['UNDEFINED_EXPAND_WITH_DEFINED_NESTED'].should.eql('machine')
+      done()
+    })
+
+    it('expands missing environment variables to an empty string but replaces with default', function(done){
+      var obj = dotenvExpand(dotenv).parsed
+
+      obj['UNDEFINED_EXPAND_WITH_DEFAULT'].should.eql('default')
+      done()
+    })
+
+    it('expands missing environment variables to an empty string but replaces with default nested', function(done){
+      var obj = dotenvExpand(dotenv).parsed
+
+      obj['UNDEFINED_EXPAND_WITH_DEFAULT_NESTED'].should.eql('default')
+      done()
+    })
+
+    it('expands missing environment variables to an empty string but replaces with default nested twice', function(done){
+      var obj = dotenvExpand(dotenv).parsed
+
+      obj['UNDEFINED_EXPAND_WITH_DEFAULT_NESTED_TWICE'].should.eql('default')
+      done()
+    })
+
+
     it('prioritizes machine key expansion over .env', function (done) {
       process.env.MACHINE = 'machine'
       var obj = dotenvExpand(dotenv).parsed
