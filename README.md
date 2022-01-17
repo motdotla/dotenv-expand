@@ -108,5 +108,16 @@ console.log(obj.SHOULD_NOT_EXIST) // testing
 console.log(process.env.SHOULD_NOT_EXIST) // undefined
 ```
 
+## FAQ
 
+### What rules does the expansion engine follow?
+
+The expansion engine roughly has the following rules:
+
+* `$KEY` will expand any env with the name `KEY`
+* `${KEY}` will expand any env with the name `KEY` 
+* `\$KEY` will escape the `$KEY` rather than expand
+* `${KEY:-default}` will first attempt to expand any env with the name `KEY`. If not one, then it will return `default`
+
+You can see a full list of examples [here](https://github.com/motdotla/dotenv-expand/blob/master/test/.env).
 
