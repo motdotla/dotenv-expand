@@ -54,7 +54,7 @@ dotenvExpand.expand(myEnv)
 console.log(process.env)
 ```
 
-### 3. That's it! 🎉
+### 3. That's it! 👏
 
 `process.env` now has the expanded keys and values you defined in your `.env` file.
 
@@ -86,3 +86,27 @@ const obj = dotenvExpand.expand(dotenv)
 
 console.log(obj)
 ```
+
+#### Options
+
+##### ignoreProcessEnv
+
+Default: `false`
+
+Turn off writing to `process.env`.
+
+```js
+const dotenv = {
+  ignoreProcessEnv: true,
+  parsed: {
+    SHOULD_NOT_EXIST: 'testing'
+  }
+}
+const obj = dotenvExpand.expand(dotenv).parsed
+
+console.log(obj.SHOULD_NOT_EXIST) // testing
+console.log(process.env.SHOULD_NOT_EXIST) // undefined
+```
+
+
+
