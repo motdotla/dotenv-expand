@@ -4,13 +4,13 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v6.0.1...master)
 
-## [6.0.1](https://github.com/motdotla/dotenv-expand/compare/v6.0.0...6.0.1) (2022-01-17)
+## [6.0.1](https://github.com/motdotla/dotenv-expand/compare/v6.0.0...v6.0.1) (2022-01-17)
 
 ### Changed
 
 - Updated README
 
-## [6.0.0](https://github.com/motdotla/dotenv-expand/compare/v5.1.0...6.0.0) (2022-01-17)
+## [6.0.0](https://github.com/motdotla/dotenv-expand/compare/v5.1.0...v6.0.0) (2022-01-17)
 
 ### Changed
 
