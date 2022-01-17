@@ -14,14 +14,31 @@ dotenv-expand is your tool.
 ## Install
 
 ```bash
+# Install locally (recommended)
 npm install dotenv --save
 npm install dotenv-expand --save
 ```
 
+Or installing with yarn? `yarn add dotenv-expand`
+
 ## Usage
 
-As early as possible in your application, require dotenv and dotenv-expand, and
-wrap dotenv-expand around dotenv.
+Usage is a cinch!
+
+### 1. Create a .env file with variable expansions in the root directory of your project
+
+```dosini
+# .env file
+#
+# Add environment-specific variables on new lines in the form of NAME=VALUE
+#
+PASSWORD=s1mpl3
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=$PASSWORD
+```
+
+### 2. As early as possible in your application, import dotenv and expand with dotenv-expand
 
 ```js
 var dotenv = require('dotenv')
@@ -29,8 +46,39 @@ var dotenvExpand = require('dotenv-expand')
 
 var myEnv = dotenv.config()
 dotenvExpand.expand(myEnv)
+
+console.log(process.env)
 ```
 
-See [test/.env](https://github.com/motdotla/dotenv-expand/blob/master/test/.env) for examples of variable expansion in your `.env`
+### 3. That's it! 🎉
+
+`process.env` now has the expanded keys and values you defined in your `.env` file.
+
+## Examples
+
+See [test/.env](https://github.com/motdotla/dotenv-expand/blob/master/test/.env) for simple and complex examples of variable expansion in your `.env`
 file.
 
+## Documentation
+
+DotenvExpand exposes one function:
+
+* expand
+
+### Expand
+
+`expand` will expand your environment variables.
+
+```js
+const dotenv = {
+  parsed: {
+    BASIC: 'basic',
+    BASIC_EXPAND: '${BASIC}',
+    BASIC_EXPAND_SIMPLE: '$BASIC'
+  }
+}
+
+const obj = dotenvExpand.expand(dotenv)
+
+console.log(obj)
+```
