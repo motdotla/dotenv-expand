@@ -24,7 +24,7 @@
   "license": "BSD-2-Clause",
   "devDependencies": {
     "dotenv": "^4.0.0",
-    "lab": "^13.0.1",
+    "lab": "^14.3.4",
     "should": "^11.2.1",
     "standard": "^9.0.2"
   },
