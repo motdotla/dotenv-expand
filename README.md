@@ -60,7 +60,7 @@ console.log(process.env)
 
 ## Examples
 
-See [test/.env](https://github.com/motdotla/dotenv-expand/blob/master/tests/.env) for simple and complex examples of variable expansion in your `.env`
+See [tests/.env](https://github.com/motdotla/dotenv-expand/blob/master/tests/.env) for simple and complex examples of variable expansion in your `.env`
 file.
 
 ## Documentation
