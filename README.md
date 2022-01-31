@@ -60,7 +60,7 @@ console.log(process.env)
 
 ## Examples
 
-See [test/.env](https://github.com/motdotla/dotenv-expand/blob/master/test/.env) for simple and complex examples of variable expansion in your `.env`
+See [tests/.env](https://github.com/motdotla/dotenv-expand/blob/master/tests/.env) for simple and complex examples of variable expansion in your `.env`
 file.
 
 ## Documentation
@@ -119,7 +119,7 @@ The expansion engine roughly has the following rules:
 * `\$KEY` will escape the `$KEY` rather than expand
 * `${KEY:-default}` will first attempt to expand any env with the name `KEY`. If not one, then it will return `default`
 
-You can see a full list of examples [here](https://github.com/motdotla/dotenv-expand/blob/master/test/.env).
+You can see a full list of examples [here](https://github.com/motdotla/dotenv-expand/blob/master/tests/.env).
 
 ## Contributing Guide
 
