@@ -129,6 +129,30 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 See [CHANGELOG.md](CHANGELOG.md)
 
+### Preload
+
+You can use the `--require` (`-r`) [command line option](https://nodejs.org/api/cli.html#cli_r_require_module) to preload dotenv & dotenv-extend. By doing this, you do not need to require and load dotenv or dotenv-extend in your application code. This is the preferred approach when using `import` instead of `require`.
+
+```bash
+$ node -r dotenv-extend/config your_script.js
+```
+
+The configuration options below are supported as command line arguments in the format `dotenv_config_<option>=value`
+
+```bash
+$ node -r dotenv-extend/config your_script.js dotenv_config_path=/custom/path/to/your/env/vars
+```
+
+Additionally, you can use environment variables to set configuration options. Command line arguments will precede these.
+
+```bash
+$ DOTENV_CONFIG_<OPTION>=value node -r dotenv-extend/config your_script.js
+```
+
+```bash
+$ DOTENV_CONFIG_ENCODING=latin1 node -r dotenv-extend/config your_script.js dotenv_config_path=/custom/path/to/.env
+```
+
 ## Who's using dotenv-expand?
 
 [These npm modules depend on it.](https://www.npmjs.com/browse/depended/dotenv-expand)
