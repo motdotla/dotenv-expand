@@ -1,3 +1,7 @@
+<p align="center">
+<strong>Announcement 📣</strong><br/>From the makers that brought you Dotenv, introducing <a href="https://sync.dotenv.org">Dotenv Sync</a>.<br/>Sync your .env files between machines, environments, and team members.<br/><a href="https://sync.dotenv.org">Join the early access list.💛</a>
+</p>
+
 # dotenv-expand
 
 <img src="https://raw.githubusercontent.com/motdotla/dotenv-expand/master/dotenv-expand.png" alt="dotenv-expand" align="right" />
@@ -14,25 +18,116 @@ dotenv-expand is your tool.
 ## Install
 
 ```bash
+# Install locally (recommended)
 npm install dotenv --save
 npm install dotenv-expand --save
 ```
 
+Or installing with yarn? `yarn add dotenv-expand`
+
 ## Usage
 
-As early as possible in your application, require dotenv and dotenv-expand, and
-wrap dotenv-expand around dotenv.
+Usage is a cinch!
+
+### 1. Create a .env file with variable expansions in the root directory of your project
+
+```dosini
+# .env file
+#
+# Add environment-specific variables on new lines in the form of NAME=VALUE
+#
+PASSWORD=s1mpl3
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=$PASSWORD
+```
+
+### 2. As early as possible in your application, import dotenv and expand with dotenv-expand
 
 ```js
 var dotenv = require('dotenv')
 var dotenvExpand = require('dotenv-expand')
 
 var myEnv = dotenv.config()
-dotenvExpand(myEnv)
+dotenvExpand.expand(myEnv)
+
+console.log(process.env)
 ```
 
-See [test/.env](./test/.env) for examples of variable expansion in your `.env`
-file. 
+### 3. That's it! 👏
+
+`process.env` now has the expanded keys and values you defined in your `.env` file.
+
+## Examples
+
+See [tests/.env](https://github.com/motdotla/dotenv-expand/blob/master/tests/.env) for simple and complex examples of variable expansion in your `.env`
+file.
+
+## Documentation
+
+DotenvExpand exposes one function:
+
+* expand
+
+### Expand
+
+`expand` will expand your environment variables.
+
+```js
+const dotenv = {
+  parsed: {
+    BASIC: 'basic',
+    BASIC_EXPAND: '${BASIC}',
+    BASIC_EXPAND_SIMPLE: '$BASIC'
+  }
+}
+
+const obj = dotenvExpand.expand(dotenv)
+
+console.log(obj)
+```
+
+#### Options
+
+##### ignoreProcessEnv
+
+Default: `false`
+
+Turn off writing to `process.env`.
+
+```js
+const dotenv = {
+  ignoreProcessEnv: true,
+  parsed: {
+    SHOULD_NOT_EXIST: 'testing'
+  }
+}
+const obj = dotenvExpand.expand(dotenv).parsed
+
+console.log(obj.SHOULD_NOT_EXIST) // testing
+console.log(process.env.SHOULD_NOT_EXIST) // undefined
+```
+
+## FAQ
+
+### What rules does the expansion engine follow?
+
+The expansion engine roughly has the following rules:
+
+* `$KEY` will expand any env with the name `KEY`
+* `${KEY}` will expand any env with the name `KEY` 
+* `\$KEY` will escape the `$KEY` rather than expand
+* `${KEY:-default}` will first attempt to expand any env with the name `KEY`. If not one, then it will return `default`
+
+You can see a full list of examples [here](https://github.com/motdotla/dotenv-expand/blob/master/tests/.env).
+
+## Contributing Guide
+
+See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## CHANGELOG
+
+See [CHANGELOG.md](CHANGELOG.md)
 
 ### Preload
 
@@ -57,3 +152,7 @@ $ DOTENV_CONFIG_<OPTION>=value node -r dotenv-extend/config your_script.js
 ```bash
 $ DOTENV_CONFIG_ENCODING=latin1 node -r dotenv-extend/config your_script.js dotenv_config_path=/custom/path/to/.env
 ```
+
+## Who's using dotenv-expand?
+
+[These npm modules depend on it.](https://www.npmjs.com/browse/depended/dotenv-expand)
