@@ -10,6 +10,8 @@
       "types": "./lib/main.d.ts",
       "default": "./lib/main.js"
     },
+    "./config": "./config.js",
+    "./config.js": "./config.js",
     "./package.json": "./package.json"
   },
   "scripts": {
