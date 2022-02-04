@@ -1,6 +1,6 @@
 {
   "name": "dotenv-expand",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "description": "Expand environment variables using dotenv",
   "main": "lib/main.js",
   "types": "lib/main.d.ts",
@@ -34,7 +34,7 @@
   "license": "BSD-2-Clause",
   "devDependencies": {
     "@types/node": "^17.0.8",
-    "dotenv": "^15.0.0",
+    "dotenv": "^16.0.0",
     "lab": "^14.3.4",
     "should": "^11.2.1",
     "standard": "^16.0.4",
