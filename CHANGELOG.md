@@ -2,8 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v6.0.1...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v8.0.0...master)
 
+## [8.0.0](https://github.com/motdotla/dotenv-expand/compare/v7.0.0...v8.0.0) (2022-02-03)
+
+### Changed
+
+- _Breaking:_ Bump to `v16.0.0` of dotenv
+
+### Added
+
+- Preload support 🎉 ([#31](https://github.com/motdotla/dotenv-expand/pull/31))
 
 ## [7.0.0](https://github.com/motdotla/dotenv-expand/compare/v6.0.1...v7.0.0) (2022-01-17)
 

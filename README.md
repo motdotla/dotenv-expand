@@ -19,7 +19,6 @@ dotenv-expand is your tool.
 
 ```bash
 # Install locally (recommended)
-npm install dotenv --save
 npm install dotenv-expand --save
 ```
 
@@ -27,24 +26,17 @@ Or installing with yarn? `yarn add dotenv-expand`
 
 ## Usage
 
-Usage is a cinch!
-
-### 1. Create a .env file with variable expansions in the root directory of your project
+Create a `.env` file in the root of your project:
 
 ```dosini
-# .env file
-#
-# Add environment-specific variables on new lines in the form of NAME=VALUE
-#
-PASSWORD=s1mpl3
-DB_HOST=localhost
-DB_USER=root
+PASSWORD="s1mpl3"
 DB_PASS=$PASSWORD
+
 ```
 
-### 2. As early as possible in your application, import dotenv and expand with dotenv-expand
+As early as possible in your application, import and configure dotenv and then expand dotenv:
 
-```js
+```javascript
 var dotenv = require('dotenv')
 var dotenvExpand = require('dotenv-expand')
 
@@ -54,9 +46,31 @@ dotenvExpand.expand(myEnv)
 console.log(process.env)
 ```
 
-### 3. That's it! 👏
+That's it. `process.env` now has the expanded keys and values you defined in your `.env` file.
 
-`process.env` now has the expanded keys and values you defined in your `.env` file.
+### Preload
+
+You can use the `--require` (`-r`) [command line option](https://nodejs.org/api/cli.html#cli_r_require_module) to preload dotenv & dotenv-extend. By doing this, you do not need to require and load dotenv or dotenv-extend in your application code. This is the preferred approach when using `import` instead of `require`.
+
+```bash
+$ node -r dotenv-extend/config your_script.js
+```
+
+The configuration options below are supported as command line arguments in the format `dotenv_config_<option>=value`
+
+```bash
+$ node -r dotenv-extend/config your_script.js dotenv_config_path=/custom/path/to/your/env/vars
+```
+
+Additionally, you can use environment variables to set configuration options. Command line arguments will precede these.
+
+```bash
+$ DOTENV_CONFIG_<OPTION>=value node -r dotenv-extend/config your_script.js
+```
+
+```bash
+$ DOTENV_CONFIG_ENCODING=latin1 node -r dotenv-extend/config your_script.js dotenv_config_path=/custom/path/to/.env
+```
 
 ## Examples
 
@@ -128,30 +142,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 ## CHANGELOG
 
 See [CHANGELOG.md](CHANGELOG.md)
-
-### Preload
-
-You can use the `--require` (`-r`) [command line option](https://nodejs.org/api/cli.html#cli_r_require_module) to preload dotenv & dotenv-extend. By doing this, you do not need to require and load dotenv or dotenv-extend in your application code. This is the preferred approach when using `import` instead of `require`.
-
-```bash
-$ node -r dotenv-extend/config your_script.js
-```
-
-The configuration options below are supported as command line arguments in the format `dotenv_config_<option>=value`
-
-```bash
-$ node -r dotenv-extend/config your_script.js dotenv_config_path=/custom/path/to/your/env/vars
-```
-
-Additionally, you can use environment variables to set configuration options. Command line arguments will precede these.
-
-```bash
-$ DOTENV_CONFIG_<OPTION>=value node -r dotenv-extend/config your_script.js
-```
-
-```bash
-$ DOTENV_CONFIG_ENCODING=latin1 node -r dotenv-extend/config your_script.js dotenv_config_path=/custom/path/to/.env
-```
 
 ## Who's using dotenv-expand?
 
