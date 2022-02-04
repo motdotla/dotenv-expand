@@ -34,7 +34,7 @@
   "license": "BSD-2-Clause",
   "devDependencies": {
     "@types/node": "^17.0.8",
-    "dotenv": "^15.0.0",
+    "dotenv": "^16.0.0",
     "lab": "^14.3.4",
     "should": "^11.2.1",
     "standard": "^16.0.4",
