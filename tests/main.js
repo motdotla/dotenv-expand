@@ -265,5 +265,13 @@ describe('dotenv-expand', function () {
       evaluation.should.eql('undefined')
       done()
     })
+
+    it('should expand with default value correctly', function (done) {
+      const obj = dotenvExpand.expand(dotenv).parsed
+
+      obj.UNDEFINED_EXPAND_WITH_DEFAULT_WITH_SPECIAL_CHARACTERS.should.eql('/default/path')
+      obj.WITHOUT_CURLY_BRACES_UNDEFINED_EXPAND_WITH_DEFAULT_WITH_SPECIAL_CHARACTERS.should.eql('/default/path')
+      done()
+    })
   })
 })
