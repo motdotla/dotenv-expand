@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v8.0.1...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v8.0.3...master)
+
+## [8.0.3](https://github.com/motdotla/dotenv-expand/compare/v8.0.2...v8.0.3) (2022-03-21)
+
+### Changed
+
+- 🐞 Fixed defaults bug ([#71](https://github.com/motdotla/dotenv-expand/pull/71))
 
 ## [8.0.2](https://github.com/motdotla/dotenv-expand/compare/v8.0.1...v8.0.2) (2022-03-11)
 
