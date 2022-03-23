@@ -6,7 +6,7 @@
 
 <img src="https://raw.githubusercontent.com/motdotla/dotenv-expand/master/dotenv-expand.png" alt="dotenv-expand" align="right" />
 
-Dotenv-expand adds variable expansion on top of 
+Dotenv-expand adds variable expansion on top of
 [dotenv](http://github.com/motdotla/dotenv). If you find yourself needing to
 expand environment variables already existing on your machine, then
 dotenv-expand is your tool.
@@ -108,7 +108,11 @@ console.log(obj)
 
 Default: `false`
 
-Turn off writing to `process.env`.
+Type: `boolean | 'read-only'`
+
+Configure how to use `process.env`.
+
+If set to `true`, `process.env` will not be read from nor be written to.
 
 ```js
 const dotenv = {
@@ -123,6 +127,42 @@ console.log(obj.SHOULD_NOT_EXIST) // testing
 console.log(process.env.SHOULD_NOT_EXIST) // undefined
 ```
 
+If set to `'read-only'`, `process.env` will be read from, but not written to.
+
+```js
+process.env.PROCESS_ENV = 'testing'
+const dotenv = {
+  ignoreProcessEnv: 'read-only',
+  parsed: {
+    SHOULD_BE_EXPANDED: '$PROCESS_ENV'
+  }
+}
+const obj = dotenvExpand.expand(dotenv).parsed
+
+console.log(obj.SHOULD_BE_EXPANDED) // testing
+console.log(process.env.SHOULD_BE_EXPANDED) // undefined
+```
+
+##### context
+
+Provide your own environment context when `ignoreProcessEnv` is `true`.
+
+```js
+const dotenv = {
+  ignoreProcessEnv: true,
+  parsed: {
+    EXPANDED_FROM_CONTEXT: '$CONTEXT_VARIABLE',
+  },
+  context: {
+    CONTEXT_VARIABLE: 'testing'
+  }
+}
+const obj = dotenvExpand.expand(dotenv).parsed
+
+console.log(obj.EXPANDED_FROM_CONTEXT) // testing
+```
+
+
 ## FAQ
 
 ### What rules does the expansion engine follow?
@@ -130,7 +170,7 @@ console.log(process.env.SHOULD_NOT_EXIST) // undefined
 The expansion engine roughly has the following rules:
 
 * `$KEY` will expand any env with the name `KEY`
-* `${KEY}` will expand any env with the name `KEY` 
+* `${KEY}` will expand any env with the name `KEY`
 * `\$KEY` will escape the `$KEY` rather than expand
 * `${KEY:-default}` will first attempt to expand any env with the name `KEY`. If not one, then it will return `default`
 
