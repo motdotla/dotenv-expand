@@ -2,19 +2,25 @@
 /// <reference types="node" />
 
 export interface DotenvExpandOptions {
-  ignoreProcessEnv?: boolean;
+  ignoreProcessEnv?: boolean | 'read-only';
   error?: Error;
   parsed?: {
+    [name: string]: string;
+  };
+  context?: {
     [name: string]: string;
   }
 }
 
 export interface DotenvExpandOutput {
-  ignoreProcessEnv?: boolean;
+  ignoreProcessEnv?: boolean | 'readonly';
   error?: Error;
   parsed?: {
     [name: string]: string;
   };
+  context?: {
+    [name: string]: string;
+  }
 }
 
 /**

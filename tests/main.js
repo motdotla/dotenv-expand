@@ -266,6 +266,51 @@ describe('dotenv-expand', function () {
       done()
     })
 
+    it('should use `context` if ignoreProcessEnv is set and a context is provided', function (done) {
+      const dotenv = {
+        ignoreProcessEnv: true,
+        context: {
+          CONTEXT: 'testing'
+        },
+        parsed: {
+          CONTEXT_EXPAND: '$CONTEXT'
+        }
+      }
+      const obj = dotenvExpand.expand(dotenv).parsed
+
+      obj.CONTEXT_EXPAND.should.eql('testing')
+      done()
+    })
+
+    it('should use process.env if ignoreProcessEnv is set to read-only', function (done) {
+      process.env.CONTEXT = 'testing'
+      const dotenv = {
+        ignoreProcessEnv: 'read-only',
+        parsed: {
+          CONTEXT_EXPAND: '$CONTEXT'
+        }
+      }
+      const obj = dotenvExpand.expand(dotenv).parsed
+
+      obj.CONTEXT_EXPAND.should.eql('testing')
+      done()
+    })
+
+    it('should not write to process.env if ignoreProcessEnv is set to read-only', function (done) {
+      process.env.CONTEXT = 'testing'
+      const dotenv = {
+        ignoreProcessEnv: 'read-only',
+        parsed: {
+          CONTEXT_EXPAND: '$CONTEXT'
+        }
+      }
+      dotenvExpand.expand(dotenv)
+
+      const evaluation = typeof process.env.CONTEXT_EXPAND
+      evaluation.should.eql('undefined')
+      done()
+    })
+
     it('should expand with default value correctly', function (done) {
       const obj = dotenvExpand.expand(dotenv).parsed
 
