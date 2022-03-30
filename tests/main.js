@@ -182,6 +182,12 @@ describe('dotenv-expand', function () {
       obj.UNDEFINED_EXPAND_WITH_DEFAULT.should.eql('default')
     })
 
+    it('expands environent variables and concats with default nested', function () {
+      const obj = dotenvExpand.expand(dotenv).parsed
+
+      obj.DEFINED_EXPAND_WITH_DEFAULT_NESTED_TWICE.should.eql('machinedefault')
+    })
+
     it('expands missing environment variables to an empty string but replaces with default nested', function () {
       const obj = dotenvExpand.expand(dotenv).parsed
 
