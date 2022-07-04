@@ -34,9 +34,11 @@
   ],
   "readmeFilename": "README.md",
   "license": "BSD-2-Clause",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+  },
   "devDependencies": {
     "@types/node": "^17.0.8",
-    "dotenv": "^16.0.0",
     "lab": "^14.3.4",
     "should": "^11.2.1",
     "standard": "^16.0.4",
