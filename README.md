@@ -2,7 +2,7 @@
 
 <p>
   <sup>
-    <a href="https://github.com/sponsors/motdotla">Dotenv-expand is internet infrastructure - supported by the developer community.</a>
+    <a href="https://github.com/sponsors/motdotla">Dotenv libraries are internet infrastructure - supported by the developer community.</a>
   </sup>
 </p>
 <sup>Special thanks to:</sup>
