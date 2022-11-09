@@ -125,6 +125,18 @@ describe('dotenv-expand', function () {
       done()
     })
 
+    it('does not expand dollar sign that are not variables', function (done) {
+      const dotenv = {
+        parsed: {
+          NO_VARIABLES: '\\$.$+$-$$'
+        }
+      }
+      const obj = dotenvExpand.expand(dotenv).parsed
+
+      obj.NO_VARIABLES.should.eql('$.$+$-$$')
+      done()
+    })
+
     it('handle mixed values', function (done) {
       const dotenv = {
         parsed: {
