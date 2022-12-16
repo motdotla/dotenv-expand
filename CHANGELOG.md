@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v9.0.0...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v10.0.0...master)
+
+## [10.0.0](https://github.com/motdotla/dotenv-expand/compare/v9.0.0...v10.0.0) (2022-12-16)
+
+### Added
+
+- Support special characters in default expansion ([#74](https://github.com/motdotla/dotenv-expand/pull/74))
 
 ## [9.0.0](https://github.com/motdotla/dotenv-expand/compare/v8.0.3...v9.0.0) (2022-08-30)
 
