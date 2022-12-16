@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v8.0.3...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v9.0.0...master)
+
+## [9.0.0](https://github.com/motdotla/dotenv-expand/compare/v8.0.3...v9.0.0) (2022-08-30)
+
+### Added
+
+- Proper support for preload and cli args ([#78](https://github.com/motdotla/dotenv-expand/pull/78))
 
 ## [8.0.3](https://github.com/motdotla/dotenv-expand/compare/v8.0.2...v8.0.3) (2022-03-21)
 

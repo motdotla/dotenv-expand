@@ -1,6 +1,51 @@
-<p align="center">
-<strong>Announcement 📣</strong><br/>From the makers that brought you Dotenv, introducing <a href="https://sync.dotenv.org">Dotenv Sync</a>.<br/>Sync your .env files between machines, environments, and team members.<br/><a href="https://sync.dotenv.org">Join the early access list.💛</a>
+<div align="center">
+
+<p>
+  <sup>
+    <a href="https://github.com/sponsors/motdotla">Dotenv libraries are supported by the community.</a>
+  </sup>
 </p>
+<sup>Special thanks to:</sup>
+<br>
+<br>
+<a href="https://www.warp.dev/?utm_source=github&utm_medium=referral&utm_campaign=dotenv_p_20220831">
+  <div>
+    <img src="https://res.cloudinary.com/dotenv-org/image/upload/v1661980709/warp_hi8oqj.png" width="230" alt="Warp">
+  </div>
+  <b>Warp is a blazingly fast, Rust-based terminal reimagined to work like a modern app.</b>
+  <div>
+    <sup>Get more done in the CLI with real text editing, block-based output, and AI command search.</sup>
+  </div>
+</a>
+<br>
+<a href="https://retool.com/?utm_source=sponsor&utm_campaign=dotenv">
+  <div>
+    <img src="https://res.cloudinary.com/dotenv-org/image/upload/c_scale,w_300/v1664466968/logo-full-black_vidfqf.png" width="270" alt="Retool">
+  </div>
+  <b>Retool helps developers build custom internal software, like CRUD apps and admin panels, really fast.</b>
+  <div>
+    <sup>Build UIs visually with flexible components, connect to any data source, and write business logic in JavaScript.</sup>
+  </div>
+</a>
+<br>
+<a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=dotenv&utm_source=github">
+  <div>
+    <img src="https://res.cloudinary.com/dotenv-org/image/upload/c_scale,w_400/v1665605496/68747470733a2f2f73696e647265736f726875732e636f6d2f6173736574732f7468616e6b732f776f726b6f732d6c6f676f2d77686974652d62672e737667_zdmsbu.svg" width="270" alt="WorkOS">
+  </div>
+  <b>Your App, Enterprise Ready.</b>
+  <div>
+    <sup>Add Single Sign-On, Multi-Factor Auth, and more, in minutes instead of months.</sup>
+  </div>
+</a>
+<hr>
+<br>
+<br>
+<br>
+<br>
+
+</div>
+
+[![dotenv-vault](https://badge.dotenv.org/works-with.svg?r=1)](https://www.dotenv.org/r/github.com/dotenv-org/dotenv-vault?r=1)
 
 # dotenv-expand
 
@@ -14,6 +59,7 @@ dotenv-expand is your tool.
 [![BuildStatus](https://img.shields.io/travis/motdotla/dotenv-expand/master.svg?style=flat-square)](https://travis-ci.org/motdotla/dotenv-expand)
 [![NPM version](https://img.shields.io/npm/v/dotenv-expand.svg?style=flat-square)](https://www.npmjs.com/package/dotenv-expand)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
+[![Featured on Openbase](https://badges.openbase.com/js/featured/dotenv-expand.svg?token=BGZJQVRDGu24cWu/F8LIrCmZvIhC1yUc03IUkk9/sUM=)](https://openbase.com/js/dotenv-expand?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
 
 ## Install
 
