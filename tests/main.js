@@ -269,5 +269,11 @@ describe('dotenv-expand', function () {
         '/default/path:with/colon'
       )
     })
+
+    it('should expand variables with "." in names correctly', function () {
+      const obj = dotenvExpand.expand(dotenv).parsed
+
+      obj['POSTGRESQL.MAIN.USER'].should.eql(obj['POSTGRESQL.BASE.USER'])
+    })
   })
 })
