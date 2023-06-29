@@ -127,6 +127,30 @@ describe('dotenv-expand', function () {
 
       obj.MIXED_VALUES.should.eql('$this42$is42')
     })
+
+    it('prefers preset variables over the default', function () {
+      process.env.DEFINE_ME = 'debug'
+      const dotenv = {
+        parsed: {
+          DEFINE_ME: '${DEFINE_ME:-INFO}'
+        }
+      }
+      const obj = dotenvExpand.expand(dotenv).parsed
+
+      obj.DEFINE_ME.should.eql('debug')
+    })
+
+    it('expands to the default', function () {
+      delete process.env.DEFINE_ME
+      const dotenv = {
+        parsed: {
+          DEFINE_ME: '${DEFINE_ME:-INFO}'
+        }
+      }
+      const obj = dotenvExpand.expand(dotenv).parsed
+
+      obj.DEFINE_ME.should.eql('INFO')
+    })
   })
 
   describe('integration', function () {
