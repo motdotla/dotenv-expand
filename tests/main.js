@@ -29,6 +29,7 @@ describe('dotenv-expand', function () {
       }
       const obj = dotenvExpand.expand(dotenv).parsed
 
+      obj.BASIC.should.eql('basic')
       obj.BASIC_EXPAND.should.eql('basic')
       obj.BASIC_EXPAND_SIMPLE.should.eql('basic')
     })
@@ -80,6 +81,30 @@ describe('dotenv-expand', function () {
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj.ESCAPED_EXPAND.should.eql('$ESCAPED')
+    })
+
+    it('does not expand undefined variables if ignoreUndefinedValues is true', function () {
+      const dotenv = {
+        ignoreUndefinedValues: true,
+        parsed: {
+          SOME_VARIABLE_1: '$SOME_VALUE'
+        }
+      }
+      const obj = dotenvExpand.expand(dotenv).parsed
+
+      obj.SOME_VARIABLE_1.should.eql('$SOME_VALUE')
+    })
+
+    it('does not remove piece of password ignoreUndefinedValues is true', function () {
+      const dotenv = {
+        ignoreUndefinedValues: true,
+        parsed: {
+          SOME_VARIABLE_2: 'somep@$word'
+        }
+      }
+      const obj = dotenvExpand.expand(dotenv).parsed
+
+      obj.SOME_VARIABLE_2.should.eql('somep@$word')
     })
 
     it('does not expand inline escaped dollar sign', function () {

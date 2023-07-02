@@ -3,6 +3,7 @@
 
 export interface DotenvExpandOptions {
   ignoreProcessEnv?: boolean;
+  ignoreUndefinedValues?: boolean;
   error?: Error;
   parsed?: {
     [name: string]: string;
@@ -11,6 +12,7 @@ export interface DotenvExpandOptions {
 
 export interface DotenvExpandOutput {
   ignoreProcessEnv?: boolean;
+  ignoreUndefinedValues?: boolean;
   error?: Error;
   parsed?: {
     [name: string]: string;
