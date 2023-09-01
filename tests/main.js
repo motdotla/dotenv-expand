@@ -58,6 +58,17 @@ describe('dotenv-expand', function () {
       obj.UNDEFINED_EXPAND.should.eql('')
     })
 
+    it('expands prefixed missing environment variables to an empty string', function () {
+      delete process.env.DEFINE_ME
+      const dotenv = {
+        parsed: {
+          DEFINE_ME: 'prefix:${DEFINE_ME}'
+        }
+      }
+      const obj = dotenvExpand.expand(dotenv).parsed
+      obj.DEFINE_ME.should.eql('prefix:')
+    })
+
     it('prioritizes machine key expansion over .env', function () {
       process.env.MACHINE = 'machine'
       const dotenv = {
