@@ -27,14 +27,14 @@
     <sup>Build UIs visually with flexible components, connect to any data source, and write business logic in JavaScript.</sup>
   </div>
 </a>
-<br>
-<a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=dotenv&utm_source=github">
+<br/>
+<a href="https://runalloy.com/?utm_source=github&utm_medium=referral&utm_campaign=1224_dotenv">
   <div>
-    <img src="https://res.cloudinary.com/dotenv-org/image/upload/c_scale,w_400/v1665605496/68747470733a2f2f73696e647265736f726875732e636f6d2f6173736574732f7468616e6b732f776f726b6f732d6c6f676f2d77686974652d62672e737667_zdmsbu.svg" width="270" alt="WorkOS">
+    <img src="https://res.cloudinary.com/dotenv-org/image/upload/c_crop,g_center,h_65,w_290,x_0,y_0/v1704258787/AlloyAutomation-logo_dqin8c.svg" width="370" alt="Alloy Automation">
   </div>
-  <b>Your App, Enterprise Ready.</b>
+  <b>Launch user-facing integrations faster</b>
   <div>
-    <sup>Add Single Sign-On, Multi-Factor Auth, and more, in minutes instead of months.</sup>
+    <sup>Easily spin up hundreds of integrations. Sign up free or read our docs first</sup>
   </div>
 </a>
 <hr>
