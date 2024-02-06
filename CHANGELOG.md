@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v10.0.0...master)
 
+- Add typings for `import dotenv-expand/config` ([#99](https://github.com/motdotla/dotenv-expand/pull/99))
+
 ## [10.0.0](https://github.com/motdotla/dotenv-expand/compare/v9.0.0...v10.0.0) (2022-12-16)
 
 ### Added
