@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file. See [standa
 ## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v10.0.0...master)
 
 - Add typings for `import dotenv-expand/config` ([#99](https://github.com/motdotla/dotenv-expand/pull/99))
+- Support expansion of dot in env variable names like `POSTGRESQL.BASE.USER` ([#93](https://github.com/motdotla/dotenv-expand/pull/93))
 
 ## [10.0.0](https://github.com/motdotla/dotenv-expand/compare/v9.0.0...v10.0.0) (2022-12-16)
 
