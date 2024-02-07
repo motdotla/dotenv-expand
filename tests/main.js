@@ -33,7 +33,7 @@ describe('dotenv-expand', function () {
       obj.BASIC_EXPAND_SIMPLE.should.eql('basic')
     })
 
-    it('expands environment variables existing already on the machine', function () {
+    it('uses environment variables existing already on the machine for expansion', function () {
       process.env.MACHINE = 'machine'
       const dotenv = {
         parsed: {
@@ -45,6 +45,21 @@ describe('dotenv-expand', function () {
 
       obj.MACHINE_EXPAND.should.eql('machine')
       obj.MACHINE_EXPAND_SIMPLE.should.eql('machine')
+    })
+
+    it('does not expand environment variables existing already on the machine that look like they could expand', function () {
+      process.env.PASSWORD = 'pas$word'
+      const dotenv = {
+        parsed: {
+          PASSWORD_EXPAND: '${PASSWORD}',
+          PASSWORD_EXPAND_SIMPLE: '$PASSWORD'
+        }
+      }
+      const obj = dotenvExpand.expand(dotenv).parsed
+
+      obj.PASSWORD_EXPAND.should.eql('pas$word')
+      obj.PASSWORD_EXPAND_SIMPLE.should.eql('pas$word')
+      obj.PASSWORD.should.eql('pas$word')
     })
 
     it('expands missing environment variables to an empty string', function () {
