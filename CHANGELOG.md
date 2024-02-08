@@ -2,10 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v10.0.0...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v11.0.0...master)
+
+## [11.0.0](https://github.com/motdotla/dotenv-expand/compare/v10.0.0...v11.0.0) (2024-02-08)
 
 - Add typings for `import dotenv-expand/config` ([#99](https://github.com/motdotla/dotenv-expand/pull/99))
 - Support expansion of dot in env variable names like `POSTGRESQL.BASE.USER` ([#93](https://github.com/motdotla/dotenv-expand/pull/93))
+- Do not expand prior `process.env` environment variables. NOTE: make sure to see updated README regarding `dotenv.config({ processEnv: {} })` ([#104](https://github.com/motdotla/dotenv-expand/pull/104))
 
 ## [10.0.0](https://github.com/motdotla/dotenv-expand/compare/v9.0.0...v10.0.0) (2022-12-16)
 
