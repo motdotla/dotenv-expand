@@ -92,7 +92,7 @@ As early as possible in your application, import and configure dotenv and then e
 var dotenv = require('dotenv')
 var dotenvExpand = require('dotenv-expand')
 
-var myEnv = dotenv.config()
+var myEnv = dotenv.config({ processEnv: {} }) // important to set processEnv: {}, otherwise expansion will be attempted on your already existing machine envs
 dotenvExpand.expand(myEnv)
 
 console.log(process.env)
