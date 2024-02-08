@@ -6,8 +6,6 @@ const Lab = require('@hapi/lab')
 const lab = exports.lab = Lab.script()
 const it = lab.test
 const describe = lab.experiment
-const beforeEach = lab.beforeEach
-
 const dotenvExpand = require('../lib/main')
 
 describe('dotenv-expand', function () {
@@ -51,6 +49,7 @@ describe('dotenv-expand', function () {
       process.env.PASSWORD = 'pas$word'
       const dotenv = {
         parsed: {
+          PASSWORD: 'dude',
           PASSWORD_EXPAND: '${PASSWORD}',
           PASSWORD_EXPAND_SIMPLE: '$PASSWORD'
         }
@@ -145,13 +144,8 @@ describe('dotenv-expand', function () {
   })
 
   describe('integration', function () {
-    let dotenv
-
-    beforeEach(function () {
-      dotenv = require('dotenv').config({ path: './tests/.env', debug: false })
-    })
-
     it('expands environment variables', function () {
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       dotenvExpand.expand(dotenv)
 
       process.env.BASIC_EXPAND.should.eql('basic')
@@ -159,12 +153,15 @@ describe('dotenv-expand', function () {
 
     it('expands environment variables existing already on the machine', function () {
       process.env.MACHINE = 'machine'
+
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       dotenvExpand.expand(dotenv)
 
       process.env.MACHINE_EXPAND.should.eql('machine')
     })
 
     it('expands missing environment variables to an empty string', function () {
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj.UNDEFINED_EXPAND.should.eql('')
@@ -172,6 +169,8 @@ describe('dotenv-expand', function () {
 
     it('expands environment variables existing already on the machine even with a default', function () {
       process.env.MACHINE = 'machine'
+
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       dotenvExpand.expand(dotenv)
 
       process.env.DEFINED_EXPAND_WITH_DEFAULT.should.eql('machine')
@@ -179,6 +178,8 @@ describe('dotenv-expand', function () {
 
     it('expands environment variables existing already on the machine even with a default when nested', function () {
       process.env.MACHINE = 'machine'
+
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       dotenvExpand.expand(dotenv)
 
       process.env.DEFINED_EXPAND_WITH_DEFAULT_NESTED.should.eql('machine')
@@ -186,30 +187,36 @@ describe('dotenv-expand', function () {
 
     it('expands environment variables undefined with one already on the machine even with a default when nested', function () {
       process.env.MACHINE = 'machine'
+
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       dotenvExpand.expand(dotenv)
 
       process.env.UNDEFINED_EXPAND_WITH_DEFINED_NESTED.should.eql('machine')
     })
 
     it('expands missing environment variables to an empty string but replaces with default', function () {
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj.UNDEFINED_EXPAND_WITH_DEFAULT.should.eql('default')
     })
 
     it('expands environent variables and concats with default nested', function () {
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj.DEFINED_EXPAND_WITH_DEFAULT_NESTED_TWICE.should.eql('machinedefault')
     })
 
     it('expands missing environment variables to an empty string but replaces with default nested', function () {
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj.UNDEFINED_EXPAND_WITH_DEFAULT_NESTED.should.eql('default')
     })
 
     it('expands missing environment variables to an empty string but replaces with default nested twice', function () {
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj.UNDEFINED_EXPAND_WITH_DEFAULT_NESTED_TWICE.should.eql('default')
@@ -217,30 +224,36 @@ describe('dotenv-expand', function () {
 
     it('prioritizes machine key expansion over .env', function () {
       process.env.MACHINE = 'machine'
+
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj.MACHINE_EXPAND.should.eql('machine')
     })
 
     it('multiple expand', function () {
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj.MONGOLAB_URI.should.eql('mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
     })
 
     it('should expand recursively', function () {
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj.MONGOLAB_URI_RECURSIVELY.should.eql('mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
     })
 
     it('multiple expand', function () {
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj.WITHOUT_CURLY_BRACES_URI.should.eql('mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
     })
 
     it('should expand recursively', function () {
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj.WITHOUT_CURLY_BRACES_URI_RECURSIVELY.should.eql('mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
@@ -261,12 +274,14 @@ describe('dotenv-expand', function () {
     })
 
     it('expands environment variables existing already on the machine even with a default with special characters', function () {
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj.DEFINED_EXPAND_WITH_DEFAULT_WITH_SPECIAL_CHARACTERS.should.eql('machine')
     })
 
     it('should expand with default value correctly', function () {
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj.UNDEFINED_EXPAND_WITH_DEFAULT_WITH_SPECIAL_CHARACTERS.should.eql(
@@ -278,6 +293,7 @@ describe('dotenv-expand', function () {
     })
 
     it('should expand with default nested value correctly', function () {
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj.UNDEFINED_EXPAND_WITH_DEFAULT_WITH_SPECIAL_CHARACTERS_NESTED.should.eql(
@@ -286,6 +302,7 @@ describe('dotenv-expand', function () {
     })
 
     it('should expand variables with "." in names correctly', function () {
+      const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
       const obj = dotenvExpand.expand(dotenv).parsed
 
       obj['POSTGRESQL.MAIN.USER'].should.eql(obj['POSTGRESQL.BASE.USER'])
