@@ -18,7 +18,8 @@
     "dts-check": "tsc --project tests/types/tsconfig.json",
     "lint": "standard",
     "pretest": "npm run lint && npm run dts-check",
-    "test": "lab tests --coverage",
+    "test": "lab tests",
+    "test-coverage": "lab tests --coverage",
     "lab": "lab"
   },
   "repository": {
