@@ -259,9 +259,10 @@ describe('dotenv-expand', function () {
       obj.WITHOUT_CURLY_BRACES_URI_RECURSIVELY.should.eql('mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
     })
 
-    it('should not write to process.env if ignoreProcessEnv is set', function () {
+    it('can write to an object rather than process.env if user provides it', function () {
+      const myObject = {}
       const dotenv = {
-        ignoreProcessEnv: true,
+        processEnv: myObject,
         parsed: {
           SHOULD_NOT_EXIST: 'testing'
         }
@@ -270,6 +271,7 @@ describe('dotenv-expand', function () {
 
       const evaluation = typeof process.env.SHOULD_NOT_EXIST
       obj.SHOULD_NOT_EXIST.should.eql('testing')
+      myObject.SHOULD_NOT_EXIST.should.eql('testing')
       evaluation.should.eql('undefined')
     })
 
