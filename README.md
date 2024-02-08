@@ -155,15 +155,16 @@ console.log(obj)
 
 #### Options
 
-##### ignoreProcessEnv
+##### processEnv
 
-Default: `false`
+Default: `process.env`
 
-Turn off writing to `process.env`.
+Specify an object to write your secrets to. Defaults to `process.env` environment variables.
 
 ```js
+const myObject = {}
 const dotenv = {
-  ignoreProcessEnv: true,
+  processEnv: myObject,
   parsed: {
     SHOULD_NOT_EXIST: 'testing'
   }
@@ -171,6 +172,7 @@ const dotenv = {
 const obj = dotenvExpand.expand(dotenv).parsed
 
 console.log(obj.SHOULD_NOT_EXIST) // testing
+console.log(myObject.SHOULD_NOT_EXIST) // testing
 console.log(process.env.SHOULD_NOT_EXIST) // undefined
 ```
 
