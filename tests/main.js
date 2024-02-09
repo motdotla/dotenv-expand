@@ -367,3 +367,13 @@ t.test('handles value of only $', ct => {
 
   ct.end()
 })
+
+t.test('handles $one$two', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.ONETWO, 'onetwo')
+  ct.equal(parsed.ONETWO_SUPER_SIMPLE, 'onetwo')
+
+  ct.end()
+})
