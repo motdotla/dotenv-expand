@@ -24,13 +24,13 @@
   </div>
 </a>
 <br>
-<a href="https://retool.com/?utm_source=sponsor&utm_campaign=dotenv">
+<a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=dotenv&utm_source=github">
   <div>
-    <img src="https://res.cloudinary.com/dotenv-org/image/upload/c_scale,w_300/v1664466968/logo-full-black_vidfqf.png" width="270" alt="Retool">
+    <img src="https://res.cloudinary.com/dotenv-org/image/upload/c_scale,w_400/v1665605496/68747470733a2f2f73696e647265736f726875732e636f6d2f6173736574732f7468616e6b732f776f726b6f732d6c6f676f2d77686974652d62672e737667_zdmsbu.svg" width="270" alt="WorkOS">
   </div>
-  <b>Retool helps developers build custom internal software, like CRUD apps and admin panels, really fast.</b>
+  <b>Your App, Enterprise Ready.</b>
   <div>
-    <sup>Build UIs visually with flexible components, connect to any data source, and write business logic in JavaScript.</sup>
+    <sup>Add Single Sign-On, Multi-Factor Auth, and more, in minutes instead of months.</sup>
   </div>
 </a>
 <br/>
@@ -155,15 +155,16 @@ console.log(obj)
 
 #### Options
 
-##### ignoreProcessEnv
+##### processEnv
 
-Default: `false`
+Default: `process.env`
 
-Turn off writing to `process.env`.
+Specify an object to write your secrets to. Defaults to `process.env` environment variables.
 
 ```js
+const myObject = {}
 const dotenv = {
-  ignoreProcessEnv: true,
+  processEnv: myObject,
   parsed: {
     SHOULD_NOT_EXIST: 'testing'
   }
@@ -171,6 +172,7 @@ const dotenv = {
 const obj = dotenvExpand.expand(dotenv).parsed
 
 console.log(obj.SHOULD_NOT_EXIST) // testing
+console.log(myObject.SHOULD_NOT_EXIST) // testing
 console.log(process.env.SHOULD_NOT_EXIST) // undefined
 ```
 
