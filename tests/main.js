@@ -373,6 +373,8 @@ t.test('handles $one$two', ct => {
   const parsed = dotenvExpand.expand(dotenv).parsed
 
   ct.equal(parsed.ONETWO, 'onetwo')
+  ct.equal(parsed.ONETWO_SIMPLE, 'onetwo')
+  ct.equal(parsed.ONETWO_SIMPLE2, 'onetwo')
   ct.equal(parsed.ONETWO_SUPER_SIMPLE, 'onetwo')
 
   ct.end()
