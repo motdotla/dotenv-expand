@@ -358,3 +358,12 @@ t.test('should expand variables with "." in names correctly', ct => {
 
   ct.end()
 })
+
+t.test('handles value of only $', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.DOLLAR, '$')
+
+  ct.end()
+})
