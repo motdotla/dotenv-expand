@@ -67,7 +67,7 @@ t.test('does not expand environment variables existing already on the machine th
 t.test('expands missing environment variables to an empty string', ct => {
   const dotenv = {
     parsed: {
-      UNDEFINED_EXPAND: '$UNDEFINED_ENV_KEY'
+      UNDEFINED_EXPAND: '$UNDEFINED'
     }
   }
   const parsed = dotenvExpand.expand(dotenv).parsed
@@ -194,7 +194,7 @@ t.test('expands environment variables existing already on the machine even with 
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   dotenvExpand.expand(dotenv)
 
-  ct.equal(process.env.DEFINED_EXPAND_WITH_DEFAULT, 'machine')
+  ct.equal(process.env.EXPAND_DEFAULT, 'machine')
 
   ct.end()
 })
@@ -205,7 +205,7 @@ t.test('expands environment variables existing already on the machine even with 
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   dotenvExpand.expand(dotenv)
 
-  ct.equal(process.env.DEFINED_EXPAND_WITH_DEFAULT_NESTED, 'machine')
+  ct.equal(process.env.EXPAND_DEFAULT_NESTED, 'machine')
 
   ct.end()
 })
@@ -216,7 +216,7 @@ t.test('expands environment variables undefined with one already on the machine 
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   dotenvExpand.expand(dotenv)
 
-  ct.equal(process.env.UNDEFINED_EXPAND_WITH_DEFINED_NESTED, 'machine')
+  ct.equal(process.env.UNDEFINED_EXPAND_NESTED, 'machine')
 
   ct.end()
 })
@@ -225,7 +225,7 @@ t.test('expands missing environment variables to an empty string but replaces wi
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.UNDEFINED_EXPAND_WITH_DEFAULT, 'default')
+  ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT, 'default')
 
   ct.end()
 })
@@ -234,7 +234,7 @@ t.test('expands environent variables and concats with default nested', ct => {
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.DEFINED_EXPAND_WITH_DEFAULT_NESTED_TWICE, 'machinedefault')
+  ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE, 'machinedefault')
 
   ct.end()
 })
@@ -243,7 +243,7 @@ t.test('expands missing environment variables to an empty string but replaces wi
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.UNDEFINED_EXPAND_WITH_DEFAULT_NESTED, 'default')
+  ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT_NESTED, 'default')
 
   ct.end()
 })
@@ -252,7 +252,7 @@ t.test('expands missing environment variables to an empty string but replaces wi
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.UNDEFINED_EXPAND_WITH_DEFAULT_NESTED_TWICE, 'default')
+  ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT_NESTED_TWICE, 'default')
 
   ct.end()
 })
@@ -290,7 +290,7 @@ t.test('multiple expand', ct => {
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.WITHOUT_CURLY_BRACES_URI, 'mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
+  ct.equal(parsed.NO_CURLY_BRACES_URI, 'mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
 
   ct.end()
 })
@@ -299,7 +299,7 @@ t.test('should expand recursively', ct => {
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.WITHOUT_CURLY_BRACES_URI_RECURSIVELY, 'mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
+  ct.equal(parsed.NO_CURLY_BRACES_URI_RECURSIVELY, 'mongodb://username:password@abcd1234.mongolab.com:12345/heroku_db')
 
   ct.end()
 })
@@ -326,7 +326,7 @@ t.test('expands environment variables existing already on the machine even with 
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.DEFINED_EXPAND_WITH_DEFAULT_WITH_SPECIAL_CHARACTERS, 'machine')
+  ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS, 'machine')
 
   ct.end()
 })
@@ -335,8 +335,8 @@ t.test('should expand with default value correctly', ct => {
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.UNDEFINED_EXPAND_WITH_DEFAULT_WITH_SPECIAL_CHARACTERS, '/default/path:with/colon')
-  ct.equal(parsed.WITHOUT_CURLY_BRACES_UNDEFINED_EXPAND_WITH_DEFAULT_WITH_SPECIAL_CHARACTERS, '/default/path:with/colon')
+  ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS, '/default/path:with/colon')
+  ct.equal(parsed.NO_CURLY_BRACES_UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS, '/default/path:with/colon')
 
   ct.end()
 })
@@ -345,7 +345,7 @@ t.test('should expand with default nested value correctly', ct => {
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.UNDEFINED_EXPAND_WITH_DEFAULT_WITH_SPECIAL_CHARACTERS_NESTED, '/default/path:with/colon')
+  ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS_NESTED, '/default/path:with/colon')
 
   ct.end()
 })
@@ -364,6 +364,18 @@ t.test('handles value of only $', ct => {
   const parsed = dotenvExpand.expand(dotenv).parsed
 
   ct.equal(parsed.DOLLAR, '$')
+
+  ct.end()
+})
+
+t.test('handles $one$two', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.ONETWO, 'onetwo')
+  ct.equal(parsed.ONETWO_SIMPLE, 'onetwo')
+  ct.equal(parsed.ONETWO_SIMPLE2, 'onetwo')
+  ct.equal(parsed.ONETWO_SUPER_SIMPLE, 'onetwo')
 
   ct.end()
 })

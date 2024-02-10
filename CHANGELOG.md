@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v11.0.0...master)
 
-## [11.0.0](https://github.com/motdotla/dotenv-expand/compare/v10.0.0...v11.0.0) (2024-02-08)
+## [11.0.0](https://github.com/motdotla/dotenv-expand/compare/v10.0.0...v11.0.0) (2024-02-10)
 
 ### Added
 
@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file. See [standa
 ### Changed
 
 - Do not expand prior `process.env` environment variables. NOTE: make sure to see updated README regarding `dotenv.config({ processEnv: {} })` ([#104](https://github.com/motdotla/dotenv-expand/pull/104))
+- 🐞 handle `$var1$var2` ([#103](https://github.com/motdotla/dotenv-expand/issues/103), [#104](https://github.com/motdotla/dotenv-expand/pull/104))
 
 ### Removed
 
