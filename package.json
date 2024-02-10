@@ -26,11 +26,14 @@
     "type": "git",
     "url": "https://github.com/motdotla/dotenv-expand"
   },
+  "funding": "https://github.com/motdotla/dotenv?sponsor=1",
   "author": "motdotla",
   "keywords": [
     "dotenv",
     "expand",
     "variables",
+    "interpolation",
+    "substitution",
     "env",
     ".env"
   ],
