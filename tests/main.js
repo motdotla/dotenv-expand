@@ -230,6 +230,15 @@ t.test('expands missing environment variables to an empty string but replaces wi
   ct.end()
 })
 
+t.test('expands missing environment variables to an empty string but replaces with default (format 2)', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT2, 'default')
+
+  ct.end()
+})
+
 t.test('expands environent variables and concats with default nested', ct => {
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
