@@ -126,7 +126,7 @@ $ DOTENV_CONFIG_ENCODING=latin1 node -r dotenv-expand/config your_script.js dote
 
 ## Examples
 
-See [tests/.env](https://github.com/motdotla/dotenv-expand/blob/master/tests/.env) for simple and complex examples of variable expansion in your `.env`
+See [tests/.env.test](https://github.com/motdotla/dotenv-expand/blob/master/tests/.env.test) for simple and complex examples of variable expansion in your `.env`
 file.
 
 ## Documentation
@@ -186,8 +186,9 @@ The expansion engine roughly has the following rules:
 * `${KEY}` will expand any env with the name `KEY` 
 * `\$KEY` will escape the `$KEY` rather than expand
 * `${KEY:-default}` will first attempt to expand any env with the name `KEY`. If not one, then it will return `default`
+* `${KEY-default}` will first attempt to expand any env with the name `KEY`. If not one, then it will return `default`
 
-You can see a full list of examples [here](https://github.com/motdotla/dotenv-expand/blob/master/tests/.env).
+You can see a full list of rules [here](https://dotenvx.com/docs/env-file#interpolation).
 
 ## Contributing Guide
 
