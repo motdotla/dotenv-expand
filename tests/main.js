@@ -2,7 +2,6 @@
 'use strict'
 
 const t = require('tap')
-
 const dotenvExpand = require('../lib/main')
 
 t.test('returns object', ct => {
@@ -410,6 +409,15 @@ t.test('does not choke', ct => {
   ct.equal(parsed.DONT_CHOKE6, 'xlC&*<j4J<d._<JKH0RBJV!4(ZQEN-+&!0p137<g*hdY2H4xk?/;KO1$(W{:Wc}Q')
   ct.equal(parsed.DONT_CHOKE7, '?$6)m*xhTVewc#NVVgxX%eBhJjoHYzpXFg=gzn[rWXPLj5UWj@z$/UDm8o79n/p%')
   ct.equal(parsed.DONT_CHOKE8, '@}:[4#g%[R-CFR});bY(Z[KcDQDsVn2_y4cSdU<Mjy!c^F`G<!Ks7]kbS]N1:bP:')
+
+  ct.end()
+})
+
+t.test('expands self without a recursive call stack error', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.EXPAND_SELF, '$EXPAND_SELF') // because it ends up accessing parsed[key].
 
   ct.end()
 })
