@@ -206,6 +206,7 @@ t.test('expands environment variables existing already on the machine even with 
   dotenvExpand.expand(dotenv)
 
   ct.equal(process.env.EXPAND_DEFAULT_NESTED, 'machine')
+  ct.equal(process.env.EXPAND_DEFAULT_NESTED2, 'machine')
 
   ct.end()
 })
@@ -226,14 +227,6 @@ t.test('expands missing environment variables to an empty string but replaces wi
   const parsed = dotenvExpand.expand(dotenv).parsed
 
   ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT, 'default')
-
-  ct.end()
-})
-
-t.test('expands missing environment variables to an empty string but replaces with default (format 2)', ct => {
-  const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
-  const parsed = dotenvExpand.expand(dotenv).parsed
-
   ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT2, 'default')
 
   ct.end()
@@ -244,6 +237,7 @@ t.test('expands environent variables and concats with default nested', ct => {
   const parsed = dotenvExpand.expand(dotenv).parsed
 
   ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE, 'machinedefault')
+  ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE2, 'machinedefault')
 
   ct.end()
 })
@@ -253,6 +247,7 @@ t.test('expands missing environment variables to an empty string but replaces wi
   const parsed = dotenvExpand.expand(dotenv).parsed
 
   ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT_NESTED, 'default')
+  ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT_NESTED2, 'default')
 
   ct.end()
 })
@@ -262,6 +257,7 @@ t.test('expands missing environment variables to an empty string but replaces wi
   const parsed = dotenvExpand.expand(dotenv).parsed
 
   ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT_NESTED_TWICE, 'default')
+  ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT_NESTED_TWICE2, 'default')
 
   ct.end()
 })
@@ -336,6 +332,7 @@ t.test('expands environment variables existing already on the machine even with 
   const parsed = dotenvExpand.expand(dotenv).parsed
 
   ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS, 'machine')
+  ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS2, 'machine')
 
   ct.end()
 })
@@ -345,7 +342,9 @@ t.test('should expand with default value correctly', ct => {
   const parsed = dotenvExpand.expand(dotenv).parsed
 
   ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS, '/default/path:with/colon')
+  ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS2, '/default/path:with/colon')
   ct.equal(parsed.NO_CURLY_BRACES_UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS, '/default/path:with/colon')
+  ct.equal(parsed.NO_CURLY_BRACES_UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS2, '/default/path:with/colon')
 
   ct.end()
 })
@@ -355,6 +354,7 @@ t.test('should expand with default nested value correctly', ct => {
   const parsed = dotenvExpand.expand(dotenv).parsed
 
   ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS_NESTED, '/default/path:with/colon')
+  ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS_NESTED2, '/default/path:with/colon')
 
   ct.end()
 })
