@@ -4,13 +4,13 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v11.0.2...master)
 
-## [11.0.2](https://github.com/motdotla/dotenv-expand/compare/v11.0.2...v11.0.1) (2024-02-10)
+## [11.0.2](https://github.com/motdotla/dotenv-expand/compare/v11.0.1...v11.0.2) (2024-02-10)
 
 ### Changed
 
 - Changed funding link in package.json to [`dotenvx.com`](https://dotenvx.com)
 
-## [11.0.1](https://github.com/motdotla/dotenv-expand/compare/v11.0.1...v11.0.0) (2024-02-10)
+## [11.0.1](https://github.com/motdotla/dotenv-expand/compare/v11.0.0...v11.0.1) (2024-02-10)
 
 ### Added
 
