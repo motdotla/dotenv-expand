@@ -17,6 +17,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 - Do not expand prior `process.env` environment variables. NOTE: make sure to see updated README regarding `dotenv.config({ processEnv: {} })` ([#104](https://github.com/motdotla/dotenv-expand/pull/104))
 - 🐞 handle `$var1$var2` ([#103](https://github.com/motdotla/dotenv-expand/issues/103), [#104](https://github.com/motdotla/dotenv-expand/pull/104))
+- 🐞 fix fatal recursive error when variable defines value with same variable `VAR=$VAR` [#98](https://github.com/motdotla/dotenv-expand/issues/98)
 
 ### Removed
 
