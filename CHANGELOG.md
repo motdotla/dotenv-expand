@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file. See [standa
 - Add typings for `import dotenv-expand/config` ([#99](https://github.com/motdotla/dotenv-expand/pull/99))
 - Support expansion of dot in env variable names like `POSTGRESQL.BASE.USER` ([#93](https://github.com/motdotla/dotenv-expand/pull/93))
 - Add `processEnv` option ([#105](https://github.com/motdotla/dotenv-expand/pull/105))
+- Add support for default format of `${VAR-default}` ([#109](https://github.com/motdotla/dotenv-expand/pull/109))
 
 ### Changed
 
