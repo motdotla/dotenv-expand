@@ -66,6 +66,7 @@ dotenv-expand is your tool.
 [![NPM version](https://img.shields.io/npm/v/dotenv-expand.svg?style=flat-square)](https://www.npmjs.com/package/dotenv-expand)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
 [![Featured on Openbase](https://badges.openbase.com/js/featured/dotenv-expand.svg?token=BGZJQVRDGu24cWu/F8LIrCmZvIhC1yUc03IUkk9/sUM=)](https://openbase.com/js/dotenv-expand?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
+[![codecov](https://codecov.io/gh/motdotla/dotenv-expand/graph/badge.svg?token=pawWEyaMfg)](https://codecov.io/gh/motdotla/dotenv-expand)
 
 ## Install
 
