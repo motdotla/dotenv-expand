@@ -4,6 +4,11 @@
 const t = require('tap')
 const dotenvExpand = require('../lib/main')
 
+t.beforeEach((ct) => {
+  // important, clear process.env before each test
+  process.env = {}
+})
+
 t.test('returns object', ct => {
   const dotenv = { parsed: {} }
   const parsed = dotenvExpand.expand(dotenv).parsed
@@ -167,6 +172,15 @@ t.test('expands environment variables', ct => {
   ct.end()
 })
 
+t.test('expands environment variables (process.env)', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  dotenvExpand.expand(dotenv)
+
+  ct.equal(process.env.BASIC_EXPAND, 'basic')
+
+  ct.end()
+})
+
 t.test('expands environment variables existing already on the machine', ct => {
   process.env.MACHINE = 'machine'
 
@@ -178,8 +192,28 @@ t.test('expands environment variables existing already on the machine', ct => {
   ct.end()
 })
 
+t.test('expands environment variables existing already on the machine (process.env)', ct => {
+  process.env.MACHINE = 'machine'
+
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  dotenvExpand.expand(dotenv)
+
+  ct.equal(process.env.MACHINE_EXPAND, 'machine')
+
+  ct.end()
+})
+
 t.test('expands missing environment variables to an empty string', ct => {
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.UNDEFINED_EXPAND, '')
+
+  ct.end()
+})
+
+t.test('expands missing environment variables to an empty string (process.env)', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
   ct.equal(parsed.UNDEFINED_EXPAND, '')
@@ -235,8 +269,18 @@ t.test('expands environent variables and concats with default nested', ct => {
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE, 'machinedefault')
-  ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE2, 'machinedefault')
+  ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE, 'machine_envdefault')
+  ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE2, 'machine_envdefault')
+
+  ct.end()
+})
+
+t.test('expands environent variables and concats with default nested', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE, 'machine_envdefault')
+  ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE2, 'machine_envdefault')
 
   ct.end()
 })
@@ -330,8 +374,18 @@ t.test('expands environment variables existing already on the machine even with 
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS, 'machine')
-  ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS2, 'machine')
+  ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS, 'machine_env')
+  ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS2, 'machine_env')
+
+  ct.end()
+})
+
+t.test('expands environment variables existing already on the machine even with a default with special characters (process.env)', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS, 'machine_env')
+  ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS2, 'machine_env')
 
   ct.end()
 })
@@ -418,6 +472,27 @@ t.test('expands self without a recursive call stack error', ct => {
   const parsed = dotenvExpand.expand(dotenv).parsed
 
   ct.equal(parsed.EXPAND_SELF, '$EXPAND_SELF') // because it ends up accessing parsed[key].
+
+  ct.end()
+})
+
+t.test('expands DOMAIN with ${HOST}', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.HOST, 'something')
+  ct.equal(parsed.DOMAIN, 'https://something')
+
+  ct.end()
+})
+
+t.test('does not attempt to expand password if already existed in processEnv', ct => {
+  process.env.PASSWORD = 'pas$word'
+
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  dotenvExpand.expand(dotenv)
+
+  ct.equal(process.env.PASSWORD, 'pas$word')
 
   ct.end()
 })
