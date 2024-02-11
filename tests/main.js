@@ -5,7 +5,7 @@ const t = require('tap')
 const dotenvExpand = require('../lib/main')
 
 t.beforeEach((ct) => {
-  // Clear process.env before each test
+  // important, clear process.env before each test
   process.env = {}
 })
 
