@@ -1,6 +1,9 @@
+.github/
+.nyc-output/
 coverage/
 examples/
 tests/
+types/
 .editorconfig
 .travis.yml
 Contributing.md
