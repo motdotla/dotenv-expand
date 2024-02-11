@@ -72,24 +72,34 @@ Create a `.env` file in the root of your project:
 ```dosini
 PASSWORD="s1mpl3"
 DB_PASS=$PASSWORD
-
 ```
 
 As early as possible in your application, import and configure dotenv and then expand dotenv:
 
 ```javascript
-var dotenv = require('dotenv')
-var dotenvExpand = require('dotenv-expand')
+const dotenv = require('dotenv')
+const dotenvExpand = require('dotenv-expand')
 
-var myEnv = dotenv.config({ processEnv: {} }) // important to set processEnv: {}, otherwise expansion will be attempted on your already existing machine envs
-dotenvExpand.expand(myEnv)
+dotenvExpand(dotenv.config())
 
-console.log(process.env)
+console.log(process.env) // remove this after you've confirmed it is expanding
 ```
 
 That's it. `process.env` now has the expanded keys and values you defined in your `.env` file.
 
+```
+dotenvExpand(dotenv.config())
+
+...
+
+connectdb(process.env.DB_PASS)
+```
+
 ### Preload
+
+> Note: Consider using [`dotenvx`](https://github.com/dotenvx/dotenvx) instead of preloading. I am now doing (and recommending) so.
+> 
+> It serves the same purpose (you do not need to require and load dotenv), has built-in expansion support, adds better debugging, and works with ANY language, framework, or platform. – [motdotla](https://github.com/motdotla)
 
 You can use the `--require` (`-r`) [command line option](https://nodejs.org/api/cli.html#cli_r_require_module) to preload dotenv & dotenv-expand. By doing this, you do not need to require and load dotenv or dotenv-expand in your application code. This is the preferred approach when using `import` instead of `require`.
 
@@ -120,7 +130,7 @@ file.
 
 ## Documentation
 
-DotenvExpand exposes one function:
+`dotenv-expand` exposes one function:
 
 * expand
 
@@ -129,7 +139,7 @@ DotenvExpand exposes one function:
 `expand` will expand your environment variables.
 
 ```js
-const dotenv = {
+const env = {
   parsed: {
     BASIC: 'basic',
     BASIC_EXPAND: '${BASIC}',
@@ -137,9 +147,7 @@ const dotenv = {
   }
 }
 
-const obj = dotenvExpand.expand(dotenv)
-
-console.log(obj)
+console.log(dotenvExpand.expand(env))
 ```
 
 #### Options
@@ -151,18 +159,17 @@ Default: `process.env`
 Specify an object to write your secrets to. Defaults to `process.env` environment variables.
 
 ```js
-const myObject = {}
-const dotenv = {
-  processEnv: myObject,
+const myEnv = {}
+const env = {
+  processEnv: myEnv,
   parsed: {
-    SHOULD_NOT_EXIST: 'testing'
+    HELLO: 'World'
   }
 }
-const obj = dotenvExpand.expand(dotenv).parsed
+dotenvExpand.expand(env)
 
-console.log(obj.SHOULD_NOT_EXIST) // testing
-console.log(myObject.SHOULD_NOT_EXIST) // testing
-console.log(process.env.SHOULD_NOT_EXIST) // undefined
+console.log(myEnv.HELLO) // World
+console.log(process.env.HELLO) // undefined
 ```
 
 ## FAQ
@@ -178,6 +185,19 @@ The expansion engine roughly has the following rules:
 * `${KEY-default}` will first attempt to expand any env with the name `KEY`. If not one, then it will return `default`
 
 You can see a full list of rules [here](https://dotenvx.com/docs/env-file#interpolation).
+
+### How can avoid expanding pre-existing envs already in my `process.env`?
+
+Modify your `dotenv.config` to write to an empty object and pass that to `dotenvExpand.processEnv`.
+
+```js
+const dotenv = require('dotenv')
+const dotenvExpand = require('dotenv-expand')
+
+const myEnv = dotenv.config({ processEnv: {} }) // prevent writing to `process.env`
+
+dotenvExpand.expand(myEnv)
+```
 
 ## Contributing Guide
 
