@@ -496,3 +496,16 @@ t.test('does not attempt to expand password if already existed in processEnv', c
 
   ct.end()
 })
+
+t.test('does not expand dollar sign that are not variables', ct => {
+  const dotenv = {
+    parsed: {
+      NO_VARIABLES: '\\$.$+$-$$'
+    }
+  }
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.NO_VARIABLES, '$.$+$-$$')
+
+  ct.end()
+})
