@@ -186,7 +186,7 @@ The expansion engine roughly has the following rules:
 
 You can see a full list of rules [here](https://dotenvx.com/docs/env-file#interpolation).
 
-### How can avoid expanding pre-existing envs already in my `process.env`?
+### How can I avoid expanding pre-existing envs (already in my `process.env`, for example `pas$word`)?
 
 Modify your `dotenv.config` to write to an empty object and pass that to `dotenvExpand.processEnv`.
 
