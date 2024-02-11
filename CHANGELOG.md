@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v11.0.2...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v11.0.3...master)
+
+## [11.0.3](https://github.com/motdotla/dotenv-expand/compare/v11.0.2...v11.0.3) (2024-02-11)
+
+### Changed
+
+- 🐞 bug fix when `processEnv` set to process.env rather than empty object (also test fixes which hid the bug) ([#113](https://github.com/motdotla/dotenv-expand/pull/113))
 
 ## [11.0.2](https://github.com/motdotla/dotenv-expand/compare/v11.0.1...v11.0.2) (2024-02-10)
 
