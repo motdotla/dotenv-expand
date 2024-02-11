@@ -51,19 +51,14 @@
 
 </div>
 
-# dotenv-expand
+# dotenv-expand [![NPM version](https://img.shields.io/npm/v/dotenv-expand.svg?style=flat-square)](https://www.npmjs.com/package/dotenv-expand)
 
-<img src="https://raw.githubusercontent.com/motdotla/dotenv-expand/master/dotenv-expand.png" alt="dotenv-expand" align="right" />
+<img src="https://raw.githubusercontent.com/motdotla/dotenv-expand/master/dotenv-expand.png" alt="dotenv-expand" align="right" width="200" />
 
-Dotenv-expand adds variable expansion on top of 
-[dotenv](http://github.com/motdotla/dotenv). If you find yourself needing to
-expand environment variables already existing on your machine, then
-dotenv-expand is your tool.
+Dotenv-expand adds variable expansion on top of [dotenv](http://github.com/motdotla/dotenv). If you find yourself needing to expand environment variables already existing on your machine, then dotenv-expand is your tool.
 
-[![BuildStatus](https://img.shields.io/travis/motdotla/dotenv-expand/master.svg?style=flat-square)](https://travis-ci.org/motdotla/dotenv-expand)
-[![NPM version](https://img.shields.io/npm/v/dotenv-expand.svg?style=flat-square)](https://www.npmjs.com/package/dotenv-expand)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
-[![Featured on Openbase](https://badges.openbase.com/js/featured/dotenv-expand.svg?token=BGZJQVRDGu24cWu/F8LIrCmZvIhC1yUc03IUkk9/sUM=)](https://openbase.com/js/dotenv-expand?utm_source=embedded&amp;utm_medium=badge&amp;utm_campaign=rate-badge)
+[![LICENSE](https://img.shields.io/github/license/motdotla/dotenv-expand.svg)](LICENSE)
 [![codecov](https://codecov.io/gh/motdotla/dotenv-expand/graph/badge.svg?token=pawWEyaMfg)](https://codecov.io/gh/motdotla/dotenv-expand)
 
 ## Install
