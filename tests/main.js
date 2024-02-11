@@ -480,7 +480,19 @@ t.test('expands DOMAIN with ${HOST}', ct => {
   const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
+  ct.equal(parsed.HOST, 'something')
   ct.equal(parsed.DOMAIN, 'https://something')
+
+  ct.end()
+})
+
+t.test('does not attempt to expand password if already existed in processEnv', ct => {
+  process.env.PASSWORD = 'pas$word'
+
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  dotenvExpand.expand(dotenv)
+
+  ct.equal(process.env.PASSWORD, 'pas$word')
 
   ct.end()
 })
