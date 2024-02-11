@@ -269,8 +269,18 @@ t.test('expands environent variables and concats with default nested', ct => {
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE, 'machinedefault')
-  ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE2, 'machinedefault')
+  ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE, 'machine_envdefault')
+  ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE2, 'machine_envdefault')
+
+  ct.end()
+})
+
+t.test('expands environent variables and concats with default nested', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE, 'machine_envdefault')
+  ct.equal(parsed.EXPAND_DEFAULT_NESTED_TWICE2, 'machine_envdefault')
 
   ct.end()
 })
@@ -364,8 +374,18 @@ t.test('expands environment variables existing already on the machine even with 
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS, 'machine')
-  ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS2, 'machine')
+  ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS, 'machine_env')
+  ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS2, 'machine_env')
+
+  ct.end()
+})
+
+t.test('expands environment variables existing already on the machine even with a default with special characters (process.env)', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS, 'machine_env')
+  ct.equal(parsed.EXPAND_DEFAULT_SPECIAL_CHARACTERS2, 'machine_env')
 
   ct.end()
 })
