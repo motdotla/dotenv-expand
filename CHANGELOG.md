@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v11.0.3...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v11.0.4...master)
+
+## [11.0.4](https://github.com/motdotla/dotenv-expand/compare/v11.0.3...v11.0.4) (2024-02-15)
+
+### Changed
+
+- 🐞 fix recursive expansion when expansion keys in reverse order ([#118](https://github.com/motdotla/dotenv-expand/pull/118))
 
 ## [11.0.3](https://github.com/motdotla/dotenv-expand/compare/v11.0.2...v11.0.3) (2024-02-11)
 
