@@ -34,6 +34,19 @@ t.test('expands environment variables', ct => {
   ct.end()
 })
 
+t.test('expands self without a recursive call stack error', ct => {
+  const dotenv = {
+    parsed: {
+      EXPAND_SELF: '$EXPAND_SELF'
+    }
+  }
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.EXPAND_SELF, '$EXPAND_SELF') // because it ends up accessing parsed[key].
+
+  ct.end()
+})
+
 t.test('uses environment variables existing already on the machine for expansion', ct => {
   process.env.MACHINE = 'machine'
   const dotenv = {
@@ -163,7 +176,7 @@ t.test('handle mixed values', ct => {
   ct.end()
 })
 
-t.test('expands environment variables', ct => {
+t.test('expands environment variables (process.env)', ct => {
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   dotenvExpand.expand(dotenv)
 
@@ -467,7 +480,7 @@ t.test('does not choke', ct => {
   ct.end()
 })
 
-t.test('expands self without a recursive call stack error', ct => {
+t.test('expands self without a recursive call stack error (process.env)', ct => {
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
@@ -506,6 +519,40 @@ t.test('does not expand dollar sign that are not variables', ct => {
   const parsed = dotenvExpand.expand(dotenv).parsed
 
   ct.equal(parsed.NO_VARIABLES, '$.$+$-$$')
+
+  ct.end()
+})
+
+t.test('expands recursively', ct => {
+  const dotenv = {
+    parsed: {
+      MOCK_SERVER_PORT: '8090',
+      MOCK_SERVER_HOST: 'http://localhost:${MOCK_SERVER_PORT}',
+      BACKEND_API_HEALTH_CHECK_URL: '${MOCK_SERVER_HOST}/ci-health-check'
+    }
+  }
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.MOCK_SERVER_PORT, '8090')
+  ct.equal(parsed.MOCK_SERVER_HOST, 'http://localhost:8090')
+  ct.equal(parsed.BACKEND_API_HEALTH_CHECK_URL, 'http://localhost:8090/ci-health-check')
+
+  ct.end()
+})
+
+t.test('expands recursively reverse order', ct => {
+  const dotenv = {
+    parsed: {
+      BACKEND_API_HEALTH_CHECK_URL: '${MOCK_SERVER_HOST}/ci-health-check',
+      MOCK_SERVER_HOST: 'http://localhost:${MOCK_SERVER_PORT}',
+      MOCK_SERVER_PORT: '8090'
+    }
+  }
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.MOCK_SERVER_PORT, '8090')
+  ct.equal(parsed.MOCK_SERVER_HOST, 'http://localhost:8090')
+  ct.equal(parsed.BACKEND_API_HEALTH_CHECK_URL, 'http://localhost:8090/ci-health-check')
 
   ct.end()
 })
