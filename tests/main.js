@@ -509,3 +509,20 @@ t.test('does not expand dollar sign that are not variables', ct => {
 
   ct.end()
 })
+
+t.test('expands recursively', ct => {
+  const dotenv = {
+    parsed: {
+      BACKEND_API_HEALTH_CHECK_URL: '${MOCK_SERVER_HOST}/ci-health-check',
+      MOCK_SERVER_HOST: 'http://localhost:${MOCK_SERVER_PORT}',
+      MOCK_SERVER_PORT: '8090'
+    }
+  }
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.MOCK_SERVER_PORT, '8090')
+  ct.equal(parsed.MOCK_SERVER_HOST, 'http://localhost:8090')
+  ct.equal(parsed.BACKEND_API_HEALTH_CHECK_URL, 'http://localhost:8090/ci-health-check')
+
+  ct.end()
+})
