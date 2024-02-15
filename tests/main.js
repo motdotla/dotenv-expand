@@ -19,6 +19,21 @@ describe('dotenv-expand', function () {
       obj.should.be.an.instanceOf(Object)
     })
 
+    it('expands environment variables recursively', function () {
+      const dotenv = {
+        parsed: {
+          BACKEND_API_HEALTH_CHECK_URL: '${MOCK_SERVER_HOST}/ci-health-check',
+          MOCK_SERVER_HOST: 'http://localhost:${MOCK_SERVER_PORT}',
+          MOCK_SERVER_PORT: '8090'
+        }
+      }
+      const obj = dotenvExpand.expand(dotenv).parsed
+
+      obj.MOCK_SERVER_PORT.should.eql('8090')
+      obj.MOCK_SERVER_HOST.should.eql('http://localhost:8090')
+      obj.BACKEND_API_HEALTH_CHECK_URL.should.eql('http://localhost:8090/ci-health-check')
+    })
+
     it('expands environment variables', function () {
       const dotenv = {
         parsed: {
