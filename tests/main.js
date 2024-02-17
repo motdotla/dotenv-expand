@@ -521,6 +521,18 @@ t.test('expands using processEnv already set on docker machine', ct => {
   ct.end()
 })
 
+t.test('recursively expands using processEnv already set on docker machine', ct => {
+  process.env.DEVCONTAINER_CADDY_PUBLIC_DOMAIN = 'mydom.test' // simulate env set on docker already
+
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  dotenvExpand.expand(dotenv)
+
+  ct.equal(process.env.PUBLIC_DOMAIN, 'mydom.test')
+  ct.equal(process.env.PUBLIC_BASE_URL, 'https://mydom.test')
+
+  ct.end()
+})
+
 t.test('does not expand dollar sign that are not variables', ct => {
   const dotenv = {
     parsed: {
