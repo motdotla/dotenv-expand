@@ -510,6 +510,17 @@ t.test('does not attempt to expand password if already existed in processEnv', c
   ct.end()
 })
 
+t.test('expands using processEnv already set on docker machine', ct => {
+  process.env.APP_DOMAIN = 'example.com' // simulate env set on docker already
+
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  dotenvExpand.expand(dotenv)
+
+  ct.equal(process.env.BASE_URL, 'https://example.com/api/')
+
+  ct.end()
+})
+
 t.test('does not expand dollar sign that are not variables', ct => {
   const dotenv = {
     parsed: {
