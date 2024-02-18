@@ -1,5 +1,5 @@
 .github/
-.nyc-output/
+.nyc_output/
 coverage/
 examples/
 tests/
