@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v11.0.5...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v11.0.6...master)
+
+## [11.0.6](https://github.com/motdotla/dotenv-expand/compare/v11.0.5...v11.0.6) (2024-02-17)
+
+### Changed
+
+- Fix `.nyc_output` in `.npmignore`
 
 ## [11.0.5](https://github.com/motdotla/dotenv-expand/compare/v11.0.4...v11.0.5) (2024-02-17)
 
