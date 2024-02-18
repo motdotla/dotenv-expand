@@ -1,6 +1,6 @@
 {
   "name": "dotenv-expand",
-  "version": "11.0.5",
+  "version": "11.0.6",
   "description": "Expand environment variables using dotenv",
   "main": "lib/main.js",
   "types": "lib/main.d.ts",
