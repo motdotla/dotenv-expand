@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v11.0.4...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v11.0.5...master)
+
+## [11.0.5](https://github.com/motdotla/dotenv-expand/compare/v11.0.4...v11.0.5) (2024-02-17)
+
+### Changed
+
+- 🐞 fix recursive expansion when expansion key is sourced from `process.env` ([#121](https://github.com/motdotla/dotenv-expand/pull/121))
 
 ## [11.0.4](https://github.com/motdotla/dotenv-expand/compare/v11.0.3...v11.0.4) (2024-02-15)
 

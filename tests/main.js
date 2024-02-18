@@ -63,24 +63,6 @@ t.test('uses environment variables existing already on the machine for expansion
   ct.end()
 })
 
-t.test('does not expand environment variables existing already on the machine that look like they could expand', ct => {
-  process.env.PASSWORD = 'pas$word'
-  const dotenv = {
-    parsed: {
-      PASSWORD: 'dude',
-      PASSWORD_EXPAND: '${PASSWORD}',
-      PASSWORD_EXPAND_SIMPLE: '$PASSWORD'
-    }
-  }
-  const parsed = dotenvExpand.expand(dotenv).parsed
-
-  ct.equal(parsed.PASSWORD_EXPAND, 'pas$word')
-  ct.equal(parsed.PASSWORD_EXPAND_SIMPLE, 'pas$word')
-  ct.equal(parsed.PASSWORD, 'pas$word')
-
-  ct.end()
-})
-
 t.test('expands missing environment variables to an empty string', ct => {
   const dotenv = {
     parsed: {
@@ -553,6 +535,34 @@ t.test('expands recursively reverse order', ct => {
   ct.equal(parsed.MOCK_SERVER_PORT, '8090')
   ct.equal(parsed.MOCK_SERVER_HOST, 'http://localhost:8090')
   ct.equal(parsed.BACKEND_API_HEALTH_CHECK_URL, 'http://localhost:8090/ci-health-check')
+
+  ct.end()
+})
+
+t.test('expands recursively', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  dotenvExpand.expand(dotenv)
+
+  ct.equal(process.env.PASSWORD_EXPAND, 'password')
+  ct.equal(process.env.PASSWORD_EXPAND_SIMPLE, 'password')
+  ct.equal(process.env.PASSWORD, 'password')
+  ct.equal(process.env.PASSWORD_EXPAND_NESTED, 'password')
+  ct.equal(process.env.PASSWORD_EXPAND_NESTED, 'password')
+
+  ct.end()
+})
+
+t.test('expands recursively but is smart enough to not attempt expansion of a pre-set env in process.env', ct => {
+  process.env.PASSWORD = 'pas$word'
+
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  dotenvExpand.expand(dotenv)
+
+  ct.equal(process.env.PASSWORD_EXPAND, 'pas$word')
+  ct.equal(process.env.PASSWORD_EXPAND_SIMPLE, 'pas$word')
+  ct.equal(process.env.PASSWORD, 'pas$word')
+  ct.equal(process.env.PASSWORD_EXPAND_NESTED, 'pas$word')
+  ct.equal(process.env.PASSWORD_EXPAND_NESTED, 'pas$word')
 
   ct.end()
 })
