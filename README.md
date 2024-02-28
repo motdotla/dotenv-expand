@@ -80,7 +80,7 @@ As early as possible in your application, import and configure dotenv and then e
 const dotenv = require('dotenv')
 const dotenvExpand = require('dotenv-expand')
 
-dotenvExpand(dotenv.config())
+dotenvExpand.expand(dotenv.config())
 
 console.log(process.env) // remove this after you've confirmed it is expanding
 ```
@@ -88,7 +88,7 @@ console.log(process.env) // remove this after you've confirmed it is expanding
 That's it. `process.env` now has the expanded keys and values you defined in your `.env` file.
 
 ```
-dotenvExpand(dotenv.config())
+dotenvExpand.expand(dotenv.config())
 
 ...
 
