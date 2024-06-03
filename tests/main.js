@@ -42,7 +42,20 @@ t.test('expands self without a recursive call stack error', ct => {
   }
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.EXPAND_SELF, '$EXPAND_SELF') // because it ends up accessing parsed[key].
+  ct.equal(parsed.EXPAND_SELF, '') // because it ends up accessing parsed[key].
+
+  ct.end()
+})
+
+t.test('expands self with undefined variable and default value', ct => {
+  const dotenv = {
+    parsed: {
+      EXPAND_SELF: '${EXPAND_SELF:-default}'
+    }
+  }
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.EXPAND_SELF, 'default')
 
   ct.end()
 })
@@ -466,7 +479,7 @@ t.test('expands self without a recursive call stack error (process.env)', ct => 
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.EXPAND_SELF, '$EXPAND_SELF') // because it ends up accessing parsed[key].
+  ct.equal(parsed.EXPAND_SELF, '') // because it ends up accessing parsed[key].
 
   ct.end()
 })
