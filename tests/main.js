@@ -566,3 +566,15 @@ t.test('expands recursively but is smart enough to not attempt expansion of a pr
 
   ct.end()
 })
+
+t.test('expand should expand defaults', ct => {
+  const parsed = dotenvExpand.expand({
+    parsed: {
+      UNDEFINED_EXPAND_DEFAULT: '${UNDEFINED_EXPAND_DEFAULT:-default}'
+    },
+    processEnv: {}
+  }).parsed
+
+  ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT, 'default')
+  ct.end()
+})
