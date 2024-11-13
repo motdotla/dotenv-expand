@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v11.0.6...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v11.0.7...master)
+
+## [11.0.7](https://github.com/motdotla/dotenv-expand/compare/v11.0.6...v11.0.7) (2024-11-13)
+
+### Changed
+
+- 🐞 fix self-expanding undefined variable with default value ([#126](https://github.com/motdotla/dotenv-expand/pull/126))
 
 ## [11.0.6](https://github.com/motdotla/dotenv-expand/compare/v11.0.5...v11.0.6) (2024-02-17)
 
