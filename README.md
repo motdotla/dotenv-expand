@@ -1,5 +1,5 @@
 <div align="center">
-🎉 announcing <a href="https://github.com/dotenvx/dotenvx">dotenvx</a>. <em><b>better expansion</b>, run anywhere, multi-environment, encrypted envs</em>.
+🎉 announcing <a href="https://github.com/dotenvx/dotenvx">dotenvx</a>. <em><b>expansion AND command substitution</b>, multi-environment, encrypted envs, and more</em>.
 </div>
 
 &nbsp;
@@ -166,28 +166,13 @@ console.log(process.env.HELLO) // undefined
 
 ### What rules does the expansion engine follow?
 
-The expansion engine roughly has the following rules:
-
-* `$KEY` will expand any env with the name `KEY`
-* `${KEY}` will expand any env with the name `KEY` 
-* `\$KEY` will escape the `$KEY` rather than expand
-* `${KEY:-default}` will first attempt to expand any env with the name `KEY`. If not one, then it will return `default`
-* `${KEY-default}` will first attempt to expand any env with the name `KEY`. If not one, then it will return `default`
-
-You can see a full list of rules [here](https://dotenvx.com/docs/env-file#interpolation).
+See a full list of rules [here](https://dotenvx.com/docs/env-file#interpolation).
 
 ### How can I avoid expanding pre-existing envs (already in my `process.env`, for example `pas$word`)?
 
-Modify your `dotenv.config` to write to an empty object and pass that to `dotenvExpand.processEnv`.
+As of `v12.0.0` dotenv-expand no longer expands `process.env`.
 
-```js
-const dotenv = require('dotenv')
-const dotenvExpand = require('dotenv-expand')
-
-const myEnv = dotenv.config({ processEnv: {} }) // prevent writing to `process.env`
-
-dotenvExpand.expand(myEnv)
-```
+If you need this ability, use [dotenvx](https://github.com/dotenvx/dotenvx) by shipping an encrypted .env file with your code - allowing safe expansion at runtime.
 
 ## Contributing Guide
 

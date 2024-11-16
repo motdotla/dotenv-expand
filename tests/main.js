@@ -404,8 +404,8 @@ t.test('should expand with default value correctly', ct => {
 
   ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS, '/default/path:with/colon')
   ct.equal(parsed.UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS2, '/default/path:with/colon')
-  ct.equal(parsed.NO_CURLY_BRACES_UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS, '/default/path:with/colon')
-  ct.equal(parsed.NO_CURLY_BRACES_UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS2, '/default/path:with/colon')
+  ct.equal(parsed.NO_CURLY_BRACES_UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS, ':-/default/path:with/colon')
+  ct.equal(parsed.NO_CURLY_BRACES_UNDEFINED_EXPAND_DEFAULT_SPECIAL_CHARACTERS2, '-/default/path:with/colon')
 
   ct.end()
 })
@@ -454,7 +454,7 @@ t.test('handles two dollar signs', ct => {
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
 
-  ct.equal(parsed.TWO_DOLLAR_SIGNS, 'abcd$')
+  ct.equal(parsed.TWO_DOLLAR_SIGNS, 'abcd$$1234')
 
   ct.end()
 })
@@ -535,7 +535,7 @@ t.test('expands recursively', ct => {
   ct.end()
 })
 
-t.test('expands recursively reverse order', ct => {
+t.test('CANNOT expand recursively reverse order (ORDER YOUR .env file for least surprise)', ct => {
   const dotenv = {
     parsed: {
       BACKEND_API_HEALTH_CHECK_URL: '${MOCK_SERVER_HOST}/ci-health-check',
@@ -546,8 +546,8 @@ t.test('expands recursively reverse order', ct => {
   const parsed = dotenvExpand.expand(dotenv).parsed
 
   ct.equal(parsed.MOCK_SERVER_PORT, '8090')
-  ct.equal(parsed.MOCK_SERVER_HOST, 'http://localhost:8090')
-  ct.equal(parsed.BACKEND_API_HEALTH_CHECK_URL, 'http://localhost:8090/ci-health-check')
+  ct.equal(parsed.MOCK_SERVER_HOST, 'http://localhost:')
+  ct.equal(parsed.BACKEND_API_HEALTH_CHECK_URL, '/ci-health-check')
 
   ct.end()
 })
@@ -571,11 +571,30 @@ t.test('expands recursively but is smart enough to not attempt expansion of a pr
   const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
   dotenvExpand.expand(dotenv)
 
+  ct.equal(process.env.PASSWORD, 'pas$word')
   ct.equal(process.env.PASSWORD_EXPAND, 'pas$word')
   ct.equal(process.env.PASSWORD_EXPAND_SIMPLE, 'pas$word')
-  ct.equal(process.env.PASSWORD, 'pas$word')
   ct.equal(process.env.PASSWORD_EXPAND_NESTED, 'pas$word')
-  ct.equal(process.env.PASSWORD_EXPAND_NESTED, 'pas$word')
+  ct.equal(process.env.PASSWORD_EXPAND_NESTED_NESTED, 'pas$word')
+
+  ct.end()
+})
+
+t.test('expands alternate logic', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  dotenvExpand.expand(dotenv)
+
+  ct.equal(process.env.ALTERNATE, 'alternate')
+
+  ct.end()
+})
+
+t.test('expands alternate logic when not set', ct => {
+  process.env.USE_IF_SET = ''
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  dotenvExpand.expand(dotenv)
+
+  ct.equal(process.env.ALTERNATE, '')
 
   ct.end()
 })
