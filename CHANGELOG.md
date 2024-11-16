@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Changed
 
-* 🎉 Expansion logic rewritten to match [dotenvx's](https://github.com/dotenvx/dotenvx). (*note: I recommend dotenvx over dotenv-expand when you are ready. I'm putting all my effort there for a unified standard .env implementation that works everywhere and matches bash, docker-compose, and more. In some cases it slightly improves on them. This leads to more reliability for your secrets and config.) ([#131](https://github.com/motdotla/dotenv-expand/pull/131))
+* 🎉 Expansion logic rewritten to match [dotenvx's](https://github.com/dotenvx/dotenvx). (*NOTE: I recommend dotenvx over dotenv-expand when you are ready. I'm putting all my effort there for a unified standard .env implementation that works everywhere and matches bash, docker-compose, and more. In some cases it slightly improves on them - leading to more reliability for your secrets and config.*) ([#131](https://github.com/motdotla/dotenv-expand/pull/131))
 * ⚠️ BREAKING: do NOT expand in reverse order. Instead, order your .env file keys from first to last as they depend on each other for expansion - principle of least surprise. ([#131](https://github.com/motdotla/dotenv-expand/pull/131))
 * ⚠️ BREAKING: do NOT attempt expansion of process.env. This has always been dangerous (unexpected side effects) and is now removed. process.env should not hold values you want to expand. Put expansion logic in your .env file. If you need this ability, use [dotenvx](https://github.com/dotenvx/dotenvx) by shipping an encrypted .env file with your code - allowing safe expansion at runtime. ([#131](https://github.com/motdotla/dotenv-expand/pull/131))
 
