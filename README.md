@@ -174,6 +174,12 @@ As of `v12.0.0` dotenv-expand no longer expands `process.env`.
 
 If you need this ability, use [dotenvx](https://github.com/dotenvx/dotenvx) by shipping an encrypted .env file with your code - allowing safe expansion at runtime.
 
+### How can I override an existing environment variable?
+
+Use [dotenvx](https://github.com/dotenvx/dotenvx) as dotenv-expand does not support this.
+
+dotenv-expand is a separate module (without knowledge of the loading of `process.env` and the `.env` file) and so cannot reliably know what to override.
+
 ## Contributing Guide
 
 See [CONTRIBUTING.md](CONTRIBUTING.md)
