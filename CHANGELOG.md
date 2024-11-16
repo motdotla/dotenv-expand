@@ -2,7 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v11.0.7...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v12.0.0...master)
+
+## [12.0.0](https://github.com/motdotla/dotenv-expand/compare/v11.0.7...v12.0.0) (2024-11-16)
+
+### Added
+
+* 🎉 support alternate value expansion ([#131](https://github.com/motdotla/dotenv-expand/pull/131))
+
+### Changed
+
+* 🎉 Expansion logic rewritten to match [dotenvx's](https://github.com/dotenvx/dotenvx). (*note: I recommend dotenvx over dotenv-expand when you are ready. I'm putting all my effort there for a unified standard .env implementation that works everywhere and matches bash, docker-compose, and more. In some cases it slightly improves on them. This leads to more reliability for your secrets and config.) ([#131](https://github.com/motdotla/dotenv-expand/pull/131))
+* ⚠️ BREAKING: do NOT expand in reverse order. Instead, order your .env file keys from first to last as they depend on each other for expansion - principle of least surprise. ([#131](https://github.com/motdotla/dotenv-expand/pull/131))
 
 ## [11.0.7](https://github.com/motdotla/dotenv-expand/compare/v11.0.6...v11.0.7) (2024-11-13)
 
