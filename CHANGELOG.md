@@ -20,10 +20,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 > This has always been dangerous (unexpected side effects) and is now removed. `process.env` should not hold values you want to expand. If for some reason you need equivalent abilities, use [dotenvx](https://github.com/dotenvx/dotenvx). You can ship an encrypted .env file with your code - allowing safe expansion at runtime - rather than relying on trying to expand pre-existing `process.env` values that could for good reason have a dollar sign in them (example a password). 
 
-* ⚠️ BREAKING: do NOT expand in reverse order ([#131](https://github.com/motdotla/dotenv-expand/pull/131))
-
-> Instead, order your KEYS from first to last as they depend on each other for expansion - principle of least surprise. 
-
 ## [11.0.7](https://github.com/motdotla/dotenv-expand/compare/v11.0.6...v11.0.7) (2024-11-13)
 
 ### Changed

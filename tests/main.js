@@ -598,3 +598,17 @@ t.test('expands alternate logic when not set', ct => {
 
   ct.end()
 })
+
+// WARNING: this is a side effect of dotenv.config prior loading to process.env. THIS IS NOT ACCURATE behavior and is removed in [dotenvx](https://github.com/dotenvx/dotenvx) to match bash expectations.
+// DO NOT RELY ON this, instead order your KEYS appropriately
+t.test('expansion for https://github.com/motdotla/dotenv-expand/issues/123', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  dotenvExpand.expand(dotenv)
+
+  ct.equal(process.env.FIRST_PAGE_URL, 'http://localhost:8090/first-page')
+  ct.equal(process.env.MOCK_SERVER_HOST, 'http://localhost:8090')
+  ct.equal(process.env.MOCK_SERVER_PORT, '8090')
+  ct.equal(process.env.PROJECT_PUBLIC_HOST, 'http://localhost:8090')
+
+  ct.end()
+})
