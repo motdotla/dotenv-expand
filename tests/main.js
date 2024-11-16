@@ -612,3 +612,13 @@ t.test('expansion for https://github.com/motdotla/dotenv-expand/issues/123', ct 
 
   ct.end()
 })
+
+t.test('expansion for https://github.com/motdotla/dotenv-expand/issues/124', ct => {
+  const dotenv = require('dotenv').config({ path: 'tests/.env.test' })
+  dotenvExpand.expand(dotenv)
+
+  ct.equal(process.env.SOURCE, '12345')
+  ct.equal(process.env.EXPANDED, 'ab-12345-cd-ef-gh')
+
+  ct.end()
+})
