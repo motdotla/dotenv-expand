@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v12.0.0...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v12.0.1...master)
+
+## [12.0.1](https://github.com/motdotla/dotenv-expand/compare/v12.0.0...v12.0.1) (2024-11-18)
+
+### Changed
+
+* break logic on runningParsed ([#ad887](https://github.com/motdotla/dotenv-expand/commit/ad88703c77f554c342c6dc7b6a26c958fde621a8))
 
 ## [12.0.0](https://github.com/motdotla/dotenv-expand/compare/v11.0.7...v12.0.0) (2024-11-16)
 
