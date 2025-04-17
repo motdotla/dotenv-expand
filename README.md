@@ -6,13 +6,8 @@
 
 <div align="center">
 
-<p>
-  <sup>
-    <a href="https://github.com/sponsors/motdotla">Dotenv libraries are supported by the community.</a>
-  </sup>
-</p>
-<sup>Special thanks to:</sup>
-<br>
+**Special thanks to [our sponsors](https://github.com/sponsors/motdotla)**
+
 <br>
 <a href="https://www.warp.dev/?utm_source=github&utm_medium=referral&utm_campaign=dotenv_p_20220831">
   <div>
@@ -24,14 +19,11 @@
   </div>
 </a>
 <br>
-<a href="https://workos.com/?utm_campaign=github_repo&utm_medium=referral&utm_content=dotenv&utm_source=github">
-  <div>
-    <img src="https://res.cloudinary.com/dotenv-org/image/upload/c_scale,w_400/v1665605496/68747470733a2f2f73696e647265736f726875732e636f6d2f6173736574732f7468616e6b732f776f726b6f732d6c6f676f2d77686974652d62672e737667_zdmsbu.svg" width="270" alt="WorkOS">
-  </div>
-  <b>Your App, Enterprise Ready.</b>
-  <div>
-    <sup>Add Single Sign-On, Multi-Factor Auth, and more, in minutes instead of months.</sup>
-  </div>
+
+<a href="https://graphite.dev/?utm_source=github&utm_medium=repo&utm_campaign=dotenv"><img src="https://res.cloudinary.com/dotenv-org/image/upload/v1744035073/graphite_lgsrl8.gif" width="240" alt="Graphite" /></a>
+
+<a href="https://graphite.dev/?utm_source=github&utm_medium=repo&utm_campaign=dotenv">
+  <b>Graphite is the AI developer productivity platform helping teams on GitHub ship higher quality software, faster.</b>
 </a>
 <hr>
 </div>
