@@ -13,8 +13,8 @@ All notable changes to this project will be documented in this file. See [standa
 > [!TIP]
 > **[Become a sponsor](https://github.com/sponsors/motdotla)**
 >
-> The dotenvx README is viewed thousands of times DAILY on GitHub and NPM.
-> Sponsoring dotenv is a great way to get in front of developers and give back to the developer community at the same time.
+> The dotenvx-expand README is viewed thousands of times DAILY on GitHub and NPM.
+> Sponsoring dotenv and dotenv-expand is a great way to get in front of developers and give back to the developer community at the same time.
 
 ## [12.0.1](https://github.com/motdotla/dotenv-expand/compare/v12.0.0...v12.0.1) (2024-11-18)
 
