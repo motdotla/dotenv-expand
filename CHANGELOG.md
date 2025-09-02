@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v12.0.2...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v12.0.3...master)
+
+## [12.0.3](https://github.com/motdotla/dotenv-expand/compare/v12.0.2...v12.0.3) (2025-09-02)
+
+### Added
+
+- 🙏 A big thank you to new sponsor [Tuple.app](https://tuple.app/dotenv) - *the premier screen sharing app for developers on macOS and Windows.* Go check them out. It's wonderful and generous of them to give back to open source by sponsoring dotenv. Give them some love back.
 
 ## [12.0.2](https://github.com/motdotla/dotenv-expand/compare/v12.0.1...v12.0.2) (2025-05-16)
 
