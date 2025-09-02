@@ -8,22 +8,11 @@
 
 **Special thanks to [our sponsors](https://github.com/sponsors/motdotla)**
 
-<br>
-<a href="https://www.warp.dev/?utm_source=github&utm_medium=referral&utm_campaign=dotenv_p_20220831">
+<a href="https://tuple.app/dotenv">
   <div>
-    <img src="https://res.cloudinary.com/dotenv-org/image/upload/v1661980709/warp_hi8oqj.png" width="230" alt="Warp">
+    <img src="https://res.cloudinary.com/dotenv-org/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1756831704/github_repo_sponsorship_gq4hvx.png" width="600" alt="Tuple">
   </div>
-  <b>Warp is a blazingly fast, Rust-based terminal reimagined to work like a modern app.</b>
-  <div>
-    <sup>Get more done in the CLI with real text editing, block-based output, and AI command search.</sup>
-  </div>
-</a>
-<br>
-
-<a href="https://graphite.dev/?utm_source=github&utm_medium=repo&utm_campaign=dotenv"><img src="https://res.cloudinary.com/dotenv-org/image/upload/v1744035073/graphite_lgsrl8.gif" width="240" alt="Graphite" /></a>
-
-<a href="https://graphite.dev/?utm_source=github&utm_medium=repo&utm_campaign=dotenv">
-  <b>Graphite is the AI developer productivity platform helping teams on GitHub ship higher quality software, faster.</b>
+  <b>Tuple, the premier screen sharing app for developers on macOS and Windows.</b>
 </a>
 <hr>
 </div>
