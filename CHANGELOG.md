@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v12.0.3...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v13.0.0...master)
+
+## [13.0.0](https://github.com/motdotla/dotenv-expand/compare/v12.0.3...v13.0.0) (2026-04-17)
+
+### Changed
+
+- bump dotenv to v17
 
 ## [12.0.3](https://github.com/motdotla/dotenv-expand/compare/v12.0.2...v12.0.3) (2025-09-02)
 
