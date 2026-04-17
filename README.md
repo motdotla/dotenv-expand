@@ -1,21 +1,4 @@
-<div align="center">
-🎉 announcing <a href="https://github.com/dotenvx/dotenvx">dotenvx</a>. <em><b>expansion AND command substitution</b>, multi-environment, encrypted envs, and more</em>.
-</div>
-
-&nbsp;
-
-<div align="center">
-
-**Special thanks to [our sponsors](https://github.com/sponsors/motdotla)**
-
-<a href="https://tuple.app/dotenv">
-  <div>
-    <img src="https://res.cloudinary.com/dotenv-org/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1756831704/github_repo_sponsorship_gq4hvx.png" width="600" alt="Tuple">
-  </div>
-  <b>Tuple, the premier screen sharing app for developers on macOS and Windows.</b>
-</a>
-<hr>
-</div>
+<a href="https://dotenvx.com/?utm_source=github&utm_medium=readme&utm_campaign=motdotla-dotenv&utm_content=banner"><img src="https://dotenvx.com/dotenv-banner.png" alt="dotenvx" /></a>
 
 # dotenv-expand [![NPM version](https://img.shields.io/npm/v/dotenv-expand.svg?style=flat-square)](https://www.npmjs.com/package/dotenv-expand)
 
