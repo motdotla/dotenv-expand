@@ -378,6 +378,27 @@ t.test('can write to an object rather than process.env if user provides it', ct 
   ct.end()
 })
 
+t.test('only expands enumerable processEnv properties', ct => {
+  const processEnv = {}
+  Object.defineProperty(processEnv, 'SECRET', {
+    enumerable: false,
+    writable: true,
+    value: 'secret'
+  })
+
+  const dotenv = {
+    processEnv,
+    parsed: {
+      SECRET_EXPAND: '$SECRET'
+    }
+  }
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.SECRET_EXPAND, '')
+
+  ct.end()
+})
+
 t.test('expands environment variables existing already on the machine even with a default with special characters', ct => {
   const dotenv = require('dotenv').config({ path: 'tests/.env.test', processEnv: {} })
   const parsed = dotenvExpand.expand(dotenv).parsed
