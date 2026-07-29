@@ -2,24 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v13.0.0...master)
+## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v1000.0.0...master)
 
 ### Added
 
-- Inline `@dotenvx/primitives` into the published package.
-- Evaluation and encryption are now supported automatically during expansion.
+- NEW 🎉: Command substitution and encryption are now supported automatically during expansion.
 
-### Breaking
-
-- Require Node.js 16 or later.
-
-### Fixed
-
-- Correct empty-variable expansion to distinguish between variables that are unset (`-` and `+`) and variables that are empty (`:-` and `:+`).
+> These improvements bring work developed in [dotenvx](https://dotenvx.com) to dotenv-expand through [`@dotenvx/primitives`](https://www.npmjs.com/package/@dotenvx/primitives).
 
 ### Changed
 
-- Publish bundled entry points with no runtime dependencies.
+- BREAKING: Require Node.js 16 or later.
+- FIXED: Correct empty-variable expansion to distinguish between variables that are unset (`-` and `+`) and variables that are empty (`:-` and `:+`).
 
 ## [13.0.0](https://github.com/motdotla/dotenv-expand/compare/v12.0.3...v13.0.0) (2026-04-17)
 
