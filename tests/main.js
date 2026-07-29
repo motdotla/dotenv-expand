@@ -1,7 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
 'use strict'
 
-const t = require('tap')
+const t = require('./test')
 const { encrypt, keypair } = require('@dotenvx/primitives')
 const dotenvExpand = require('../lib/main')
 
