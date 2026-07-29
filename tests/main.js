@@ -2,6 +2,7 @@
 'use strict'
 
 const t = require('tap')
+const { encrypt, keypair } = require('@dotenvx/primitives')
 const dotenvExpand = require('../lib/main')
 
 t.beforeEach((ct) => {
@@ -595,6 +596,74 @@ t.test('expands alternate logic when not set', ct => {
   dotenvExpand.expand(dotenv)
 
   ct.equal(process.env.ALTERNATE, '')
+
+  ct.end()
+})
+
+t.test('distinguishes set from non-empty variables', ct => {
+  const dotenv = {
+    parsed: {
+      VAR: '',
+      DEFAULT_WHEN_UNSET: '${VAR-default}',
+      DEFAULT_WHEN_MISSING: '${MISSING-default}',
+      ALTERNATE_WHEN_SET: '${VAR+alternate}',
+      ALTERNATE_WHEN_MISSING: '${MISSING+alternate}'
+    }
+  }
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.DEFAULT_WHEN_UNSET, '')
+  ct.equal(parsed.DEFAULT_WHEN_MISSING, 'default')
+  ct.equal(parsed.ALTERNATE_WHEN_SET, 'alternate')
+  ct.equal(parsed.ALTERNATE_WHEN_MISSING, '')
+
+  ct.end()
+})
+
+t.test('evaluates command substitutions', ct => {
+  const dotenv = {
+    parsed: {
+      EVALUATED: '$(printf evaluated)'
+    },
+    processEnv: {}
+  }
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.EVALUATED, 'evaluated')
+
+  ct.end()
+})
+
+t.test('decrypts encrypted values before expanding them', ct => {
+  const { publicKey, privateKey } = keypair()
+  const dotenv = {
+    parsed: {
+      BASIC: 'basic',
+      ENCRYPTED: encrypt(publicKey, '$BASIC')
+    },
+    processEnv: {
+      DOTENV_PRIVATE_KEY: privateKey
+    }
+  }
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.ENCRYPTED, 'basic')
+
+  ct.end()
+})
+
+t.test('leaves encrypted values unchanged without a private key', ct => {
+  const { publicKey } = keypair()
+  const encryptedValue = encrypt(publicKey, 'secret')
+  const dotenv = {
+    parsed: {
+      ENCRYPTED: encryptedValue
+    },
+    processEnv: {}
+  }
+  const parsed = dotenvExpand.expand(dotenv).parsed
+
+  ct.equal(parsed.ENCRYPTED, encryptedValue)
 
   ct.end()
 })

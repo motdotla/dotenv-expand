@@ -2,24 +2,35 @@
   "name": "dotenv-expand",
   "version": "13.0.0",
   "description": "Expand environment variables using dotenv",
-  "main": "lib/main.js",
+  "main": "dist/lib/main.js",
   "types": "lib/main.d.ts",
   "exports": {
     ".": {
-      "require": "./lib/main.js",
+      "require": "./dist/lib/main.js",
       "types": "./lib/main.d.ts",
-      "default": "./lib/main.js"
+      "default": "./dist/lib/main.js"
     },
-    "./config": "./config.js",
-    "./config.js": "./config.js",
+    "./config": "./dist/config.js",
+    "./config.js": "./dist/config.js",
     "./package.json": "./package.json"
   },
+  "files": [
+    "dist/**/*",
+    "lib/main.d.ts",
+    "config.d.ts",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
+    "build": "esbuild lib/main.js config.js --bundle --platform=node --format=cjs --target=node16 --outdir=dist --outbase=. --legal-comments=none --minify",
     "dts-check": "tsc --project tests/types/tsconfig.json",
     "lint": "standard",
     "pretest": "npm run lint && npm run dts-check",
     "test": "tap tests/*.js --100 -Rspec",
     "test:coverage": "tap --coverage-report=lcov",
+    "prepack": "npm run build",
+    "prepublishOnly": "npm pack --dry-run",
     "prerelease": "npm test",
     "release": "standard-version"
   },
@@ -39,18 +50,18 @@
     ".env"
   ],
   "readmeFilename": "README.md",
-  "license": "BSD-2-Clause",
+  "license": "BSD-3-Clause",
   "devDependencies": {
+    "@dotenvx/primitives": "2.1.1",
     "@types/node": "^18.11.3",
+    "dotenv": "^17.4.2",
+    "esbuild": "^0.28.1",
     "standard": "^16.0.4",
     "standard-version": "^9.5.0",
     "tap": "^16.3.0",
     "typescript": "^4.5.4"
   },
   "engines": {
-    "node": ">=12"
-  },
-  "dependencies": {
-    "dotenv": "^17.4.2"
+    "node": ">=16"
   }
 }
