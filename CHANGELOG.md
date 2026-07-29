@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Added
 
-- NEW 🎉: Command substitution and encryption are now supported automatically during expansion.
+- NEW 🎉: Command substitution and encryption are now supported automatically during expansion. ([#151](https://github.com/motdotla/dotenv-expand/pull/151))
 
 > These improvements bring work developed in [dotenvx](https://dotenvx.com) to dotenv-expand through [`@dotenvx/primitives`](https://www.npmjs.com/package/@dotenvx/primitives).
 
