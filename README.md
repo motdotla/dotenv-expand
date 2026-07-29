@@ -7,6 +7,8 @@
 Dotenv-expand is a zero-dependency module that adds variable expansion, command substitution, and encrypted value support on top of [dotenv](https://github.com/motdotla/dotenv).
 
 &nbsp;
+&nbsp;
+&nbsp;
 
 ## Usage
 
