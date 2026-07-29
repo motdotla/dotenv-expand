@@ -2,7 +2,7 @@
 
 # dotenv-expand [![NPM version](https://img.shields.io/npm/v/dotenv-expand.svg?style=flat-square)](https://www.npmjs.com/package/dotenv-expand) [![downloads](https://img.shields.io/npm/dw/dotenv-expand)](https://www.npmjs.com/package/dotenv-expand)
 
-<img src="https://raw.githubusercontent.com/motdotla/dotenv-expand/master/dotenv-expand.png" alt="dotenv-expand" align="right" width="200" />
+<img src="https://raw.githubusercontent.com/motdotla/dotenv/master/dotenv.svg" alt="dotenv" align="right" width="200" />
 
 Dotenv-expand is a zero-dependency module that adds variable expansion, command substitution, and encrypted value support on top of [dotenv](https://github.com/motdotla/dotenv).
 

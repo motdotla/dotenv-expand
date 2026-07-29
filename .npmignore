@@ -6,4 +6,3 @@ types/
 .editorconfig
 .travis.yml
 Contributing.md
-dotenv-expand.png
