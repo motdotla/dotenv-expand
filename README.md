@@ -151,6 +151,8 @@ See the complete [interpolation rules](https://dotenvx.com/docs/env-file#interpo
 
 </details>
 
+&nbsp;
+
 ## FAQ
 
 <details><summary>What rules does the expansion engine follow?</summary><br>
