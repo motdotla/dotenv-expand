@@ -1,4 +1,4 @@
-> If you have found dotenv-expand useful, consider checking out [dotenvx](https://dotenvx.com/?utm_source=github&utm_medium=readme&utm_campaign=motdotla-dotenv&utm_content=banner) for encrypting your `.env` files. Thank you for using dotenv. 🙏
+> If you have found dotenv-expand useful, consider checking out [dotenvx](https://github.com/dotenvx/dotenvx) for encrypting your `.env` files. Thank you for using dotenv. 🙏
 
 # dotenv-expand [![NPM version](https://img.shields.io/npm/v/dotenv-expand.svg?style=flat-square)](https://www.npmjs.com/package/dotenv-expand) [![downloads](https://img.shields.io/npm/dw/dotenv-expand)](https://www.npmjs.com/package/dotenv-expand)
 
