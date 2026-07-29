@@ -1,6 +1,6 @@
-<a href="https://dotenvx.com/?utm_source=github&utm_medium=readme&utm_campaign=motdotla-dotenv&utm_content=banner"><img src="https://dotenvx.com/dotenv-banner.png" alt="dotenvx" /></a>
+> [dotenvx](https://dotenvx.com/?utm_source=github&utm_medium=readme&utm_campaign=motdotla-dotenv&utm_content=banner) — a secure dotenv, from the creator of `dotenv` for the agentic age. Run anywhere, encrypt secrets, and commit safely.
 
-# dotenv-expand [![NPM version](https://img.shields.io/npm/v/dotenv-expand.svg?style=flat-square)](https://www.npmjs.com/package/dotenv-expand)
+# dotenv-expand [![NPM version](https://img.shields.io/npm/v/dotenv-expand.svg?style=flat-square)](https://www.npmjs.com/package/dotenv-expand) [![downloads](https://img.shields.io/npm/dw/dotenv-expand)](https://www.npmjs.com/package/dotenv-expand)
 
 <img src="https://raw.githubusercontent.com/motdotla/dotenv-expand/master/dotenv-expand.png" alt="dotenv-expand" align="right" width="200" />
 
@@ -127,19 +127,43 @@ console.log(process.env.HELLO) // undefined
 
 ## FAQ
 
-### What rules does the expansion engine follow?
+#### What rules does the expansion engine follow?
 
 See a full list of rules [here](https://dotenvx.com/docs/env-file#interpolation).
 
-### How can I avoid expanding pre-existing envs (already in my `process.env`, for example `pas$word`)?
+#### How does command substitution work?
+
+Use `$(command)` in your `.env` file. dotenv-expand runs the command and replaces the expression with its output.
+
+```ini
+NODE_VERSION=$(node --version)
+```
+
+Only use command substitution with `.env` files you trust. It executes commands with the permissions of the current process.
+
+#### How does encryption work?
+
+Use [dotenvx](https://dotenvx.com) to encrypt your `.env` file. dotenv-expand automatically decrypts `encrypted:` values when `DOTENV_PRIVATE_KEY` is set.
+
+```sh
+DOTENV_PRIVATE_KEY="<private key>" node -r dotenv-expand/config your_script.js
+```
+
+Keep the private key separate from the encrypted `.env` file—for example, in your cloud platform's secrets manager. Read the [dotenvx whitepaper](https://dotenvx.com/dotenvx.pdf?v=README) for more details.
+
+#### Is it safe to commit an encrypted `.env` file?
+
+Yes, as long as the corresponding `DOTENV_PRIVATE_KEY` is stored separately and never committed with it. Use [dotenvx](https://dotenvx.com) to create and manage the encrypted file.
+
+#### How can I avoid expanding pre-existing envs (already in my `process.env`, for example `pas$word`)?
 
 As of `v12.0.0` dotenv-expand no longer expands `process.env`.
 
-If you need this ability, use [dotenvx](https://github.com/dotenvx/dotenvx) by shipping an encrypted .env file with your code - allowing safe expansion at runtime.
+If you need this ability, use [dotenvx](https://dotenvx.com) and ship an encrypted `.env` file with your code, allowing safe expansion at runtime.
 
-### How can I override an existing environment variable?
+#### How can I override an existing environment variable?
 
-Use [dotenvx](https://github.com/dotenvx/dotenvx) as dotenv-expand does not support this.
+Use [dotenvx](https://dotenvx.com), as dotenv-expand does not support this.
 
 dotenv-expand is a separate module (without knowledge of the loading of `process.env` and the `.env` file) and so cannot reliably know what to override.
 

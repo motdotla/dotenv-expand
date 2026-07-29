@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 - BREAKING: Require Node.js 16 or later.
 - FIXED: Correct empty-variable expansion to distinguish between variables that are unset (`-` and `+`) and variables that are empty (`:-` and `:+`).
+- License updated from BSD-2-Clause to BSD-3-Clause.
 
 ## [13.0.0](https://github.com/motdotla/dotenv-expand/compare/v12.0.3...v13.0.0) (2026-04-17)
 
