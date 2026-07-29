@@ -35,7 +35,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/motdotla/dotenv-expand"
+    "url": "git+https://github.com/dotenvx/dotenv-expand.git"
+  },
+  "homepage": "https://github.com/dotenvx/dotenv-expand#readme",
+  "bugs": {
+    "url": "https://github.com/dotenvx/dotenv-expand/issues"
   },
   "funding": "https://dotenvx.com",
   "author": "motdotla",

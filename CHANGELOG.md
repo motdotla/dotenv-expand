@@ -2,11 +2,11 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v1000.0.0...master)
+## [Unreleased](https://github.com/dotenvx/dotenv-expand/compare/v1000.0.0...master)
 
 ### Added
 
-- NEW 🎉: Command substitution and encryption are now supported automatically during expansion. ([#151](https://github.com/motdotla/dotenv-expand/pull/151))
+- NEW 🎉: Command substitution and encryption are now supported automatically during expansion. ([#151](https://github.com/dotenvx/dotenv-expand/pull/151))
 
 > These improvements bring work developed in [dotenvx](https://dotenvx.com) to dotenv-expand through [`@dotenvx/primitives`](https://www.npmjs.com/package/@dotenvx/primitives).
 
