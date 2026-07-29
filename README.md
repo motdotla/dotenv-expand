@@ -49,6 +49,12 @@ That's it. `process.env` now contains the expanded values from your `.env` file.
 
 <details><summary>Preload</summary><br>
 
+> Consider using [dotenvx](https://github.com/dotenvx/dotenvx) instead. It includes expansion, command substitution, and encrypted `.env` support across languages and platforms:
+>
+> ```sh
+> dotenvx run -- node your_script.js
+> ```
+
 Use Node's `--require` (`-r`) option to load and expand `.env` before your application starts:
 
 ```sh
@@ -70,14 +76,6 @@ DOTENV_CONFIG_ENCODING=latin1 node -r dotenv-expand/config your_script.js
 ```
 
 Command-line arguments take precedence over environment variables.
-
-</details>
-
-<details><summary>yarn</summary><br>
-
-```sh
-yarn add dotenv dotenv-expand
-```
 
 </details>
 
