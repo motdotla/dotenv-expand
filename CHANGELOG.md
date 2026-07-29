@@ -1,20 +1,24 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file.
 
 ## [Unreleased](https://github.com/dotenvx/dotenv-expand/compare/v1000.0.0...master)
+
+## [1000.0.0](https://github.com/motdotla/dotenv-expand/compare/v12.0.3...v1000.0.0) (2026-07-29)
 
 ### Added
 
 - NEW 🎉: Command substitution and encryption are now supported automatically during expansion. ([#151](https://github.com/dotenvx/dotenv-expand/pull/151))
 
-> These improvements bring work developed in [dotenvx](https://dotenvx.com) to dotenv-expand through [`@dotenvx/primitives`](https://www.npmjs.com/package/@dotenvx/primitives).
+> These improvements bring work developed in [dotenvx](https://github.com/dotenvx/dotenvx) to dotenv-expand through [`@dotenvx/primitives`](https://www.npmjs.com/package/@dotenvx/primitives).
 
 ### Changed
 
 - BREAKING: Require Node.js 16 or later.
 - FIXED: Correct empty-variable expansion to distinguish between variables that are unset (`-` and `+`) and variables that are empty (`:-` and `:+`).
 - License updated from BSD-2-Clause to BSD-3-Clause.
+
+> Yes, the jump to major version 1000 is intentional. It looks cool and this release represents the biggest changes to dotenv-expand in 10 years - adding support for command substitution and decryption of encrypted .env files.
 
 ## [13.0.0](https://github.com/motdotla/dotenv-expand/compare/v12.0.3...v13.0.0) (2026-04-17)
 
