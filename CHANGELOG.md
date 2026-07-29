@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [Unreleased](https://github.com/motdotla/dotenv-expand/compare/v13.0.0...master)
 
+### Added
+
+- Inline `@dotenvx/primitives` into the published package.
+- Evaluation and encryption are now supported automatically during expansion.
+
+### Breaking
+
+- Require Node.js 16 or later.
+
+### Fixed
+
+- Correct empty-variable expansion to distinguish between variables that are unset (`-` and `+`) and variables that are empty (`:-` and `:+`).
+
+### Changed
+
+- Publish bundled entry points with no runtime dependencies.
+
 ## [13.0.0](https://github.com/motdotla/dotenv-expand/compare/v12.0.3...v13.0.0) (2026-04-17)
 
 ### Changed
@@ -177,7 +194,3 @@ All notable changes to this project will be documented in this file. See [standa
 ## 5.1.0 and prior
 
 Please see commit history.
-
-
-
-
